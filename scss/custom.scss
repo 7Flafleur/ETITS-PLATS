@@ -1,0 +1,378 @@
+/*VARIABLES*/
+
+$text-font: "Manrope";
+$header-font: "Anton";
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: grey solid 1px;
+  width: 100%;
+  height: 667px;
+
+  background-image: url(../pictures/lampos-aritonang-24gR_9lCdes-unsplash\ 1.png);
+}
+
+h1 {
+  color: #ffd15b;
+  text-align: center;
+  font-family: $header-font;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 890px;
+}
+
+#searchbar {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  font: $text-font;
+  width: 66%;
+  height: 72px;
+  background-color: #f1f1f1;
+  border-radius: 11px;
+  input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+  }
+  button {
+    background: black;
+    border: none;
+    width: 51px;
+    height: 52px;
+    border-radius: 11px;
+  }
+}
+
+main {
+  background: #ededed;
+}
+
+.sort {
+
+  padding: 25px 104px 20px 104px;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    height: 51px;
+    background-color: #fff;
+    border-radius: 14px;
+  }
+}
+
+//*DROPDOWN test*///////////////
+
+.searchsort {
+  // border: #7A7A7A solid 1px;
+  width:188px;
+ 
+}
+
+.dropdown-item {
+  display: block;
+}
+
+#dropdown1,
+#dropdown2,
+#dropdown3 {
+  height: 280px;
+  overflow: clip;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.dropdown-item {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: grey;
+  font-family: $text-font;
+  margin-top: 2px;
+}
+.dropdown-item:hover {
+  background-color: rgba(0, 204, 255, 0.459);
+}
+
+#toggle1,
+#toggle2,
+#toggle3 {
+  font-size: 16px;
+}
+
+.dropdown_container {
+ 
+  display: flex;
+  justify-content: space-evenly;
+
+  gap: 55px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  font-family: $text-font;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.dropbtn::after {
+  content: " \00a0  \25bc";
+}
+
+.labels {
+  display: none;
+  position: relative;
+  display: inline-flex;
+  padding: 17px 16px;
+  align-items: center;
+  gap: 63px;
+  border-radius: 11px;
+  background: #fff;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  border: grey solid 1px;
+  position: relative;
+  display: inline-flex;
+  padding: 17px 16px;
+  align-items: center;
+  gap: 63px;
+  border-radius: 11px;
+  background: #fff;
+  /*change to data active*/
+  &:hover ~ .labels {
+    border: #ffd15b solid 1px;
+    display: flex;
+    &::after {
+      content: "catégorie";
+    }
+  }
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-item:hover{
+  cursor: pointer;
+
+}
+
+////////////////////////////////////////////////////////*CARDS*//////////////////////////////////////////////////////////////////////////////
+.tag_section{
+  
+  display: flex;
+  padding: 25px 104px 20px 104px;
+  gap: 55px;
+  
+}
+
+.searchtag{
+  border-radius: 12px;
+ cursor: pointer;
+  min-width: 100px;
+  background-color: #ffd15b;
+  font-size: 16px;
+  font-family: $text-font;
+  display: inline-flex;
+padding: 17px 18px;
+align-items: center;
+gap: 60px;
+color: #000;
+font-family: Manrope;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+////////////////////////////////////////////
+.card_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 50px 102px 205px 102px;
+  position: relative;
+  gap: 35px;
+}
+
+.nb_recipes {
+  font-family: $header-font;
+}
+
+.card {
+ display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 731px;
+  flex-shrink: 0;
+  border-radius: 21px;
+  background: #fff;
+  box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+  h2 {
+    margin: 0;
+    color: #000;
+font-family: Anton;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+
+  position: relative;
+}
+
+.card[data-visible=false] {
+  display:none; // Your styles here
+ }
+
+ .card[data-visible=true]{
+  display:flex;
+  
+ }
+ 
+
+
+.cardImg {
+  width: 100%;
+  height: 253px;
+  object-fit: cover;
+  border-radius: 21px 21px 0 0;
+}
+
+.timetag {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: inline-flex;
+  padding: 5px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 14px;
+  background: #ffd15b;
+  width: 65px;
+  height: 26px;
+  font-family: $text-font;
+}
+
+.card_content {
+  // border: red solid 5px;
+  padding: 25px;
+  height: 65%;
+  gap:32px;
+  font-family: $text-font;
+  overflow: clip;
+  h3{
+    margin-bottom:0;
+    color: #000;
+
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+  h4{
+    margin-bottom: 0;
+    padding: 0;
+    color: var(--Grey, #7A7A7A);
+font-family: Manrope;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 1.08px;
+text-transform: uppercase;
+  }
+}
+
+.card_content-recette {
+  
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-height: 32%;
+  overflow: clip;
+  justify-content: flex-start;
+  margin-top:0;
+
+}
+
+.recette {
+  display: flex;
+  align-items: flex-start;
+  color: #1b1b1b;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  overflow: clip;
+
+}
+
+.card_content-ingredients {
+  list-style-type: none; 
+  display: flex;
+  height:37%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  padding-left: 0;
+  align-items: flex-start;
+  gap:5px;
+}
+
+.ingredient {
+  color: #1b1b1b;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.quantité {
+  color: #7a7a7a;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
