@@ -39,7 +39,9 @@ displayCards(recipes);
       });
       if(visibleRecipesList.length==0){
         console.log("Aucune recette trouvée!")
-        
+        const resultmsg=document.createElement("h2")
+        resultmsg.textContent="Aucune recette trouvée"
+        recipesection.append(resultmsg)
       }
   }  
   else {
