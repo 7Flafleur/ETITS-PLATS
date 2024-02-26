@@ -8,13 +8,13 @@
 
 function filterDropDown(button, dropdown, input, items) {
     //create dropdown items from list of items
-    for (let i=0; i<items.length; i++) {
+    items.forEach((item) =>{
         let dropdown_item = document.createElement('li');
         dropdown_item.setAttribute("data-visible","true");
         dropdown_item.setAttribute('class', 'dropdown-item');
-        dropdown_item.innerHTML = items[i];
+        dropdown_item.innerHTML = item;
         dropdown.appendChild(dropdown_item);
-    }
+    }) 
     //hide the dropdown list
     dropdown.style.display = 'none';
 
@@ -60,8 +60,9 @@ function findCards(term){
     const cards=document.querySelectorAll(".card")
     cards.forEach(card =>{
         if(!card.textContent.includes(term)){   
-            console.log(card)
-            card.setAttribute("data-visible", "false")    
+            
+            card.setAttribute("data-visible", "false")  
+             
         }
     
     })
