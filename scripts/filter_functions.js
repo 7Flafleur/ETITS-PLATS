@@ -1,11 +1,5 @@
 //VARIABLES
 
-function filterSearchbar(visibleRecipesArray,input,){
-
-
-
-
-}
 
 
 
@@ -46,6 +40,7 @@ function filterDropDown(button, dropdown, input, items) {
             else
                 dropdown_items[i].style.display = 'none';
         }}
+        updateRecipeCount();
     });
 }
 
@@ -66,17 +61,55 @@ function filterDropDown(button, dropdown, input, items) {
 }
 
 
-function findCards(term){
-    const cards=document.querySelectorAll(".card")
-    cards.forEach(card =>{
-        if(!card.textContent.includes(term)){   
-            
-            card.setAttribute("data-visible", "false")  
-             
-        }
+function findCards(query){
+    if (query.length >= 3) {
+        console.log(query);
+        let visibleRecipesList=document.querySelectorAll(".card[data-visible='true' ]")
+        
+        visibleRecipesList.forEach((recipe) => {
+            let titre = recipe.querySelector("h2").textContent.toUpperCase();
+            let recette = recipe.querySelector(".card_content-recette").textContent.toUpperCase();
+            let ingredients = recipe.querySelector(".card_content-ingredients").textContent.toUpperCase();
+            if (!titre.includes(query) && !recette.includes(query) && !ingredients.includes(query)) {
+                recipe.dataset.visible = "false";
+                console.log("not included");
+            }
+            else{
+              recipe.dataset.visible="true";
+            }
+  updateRecipeCount()
     
-    })
+  
+        });
+        if(visibleRecipesList.length==0){
+          console.log("Aucune recette trouvée!")
+          if(resultmsg!=null)
+          {
+           resultmsg.remove()
+          }
+          resultmsg=document.createElement("h2")
+          resultmsg.setAttribute("id", "resultmsg")
+          resultmsg.textContent="Aucune recette trouvée"
+          recipesection.append(resultmsg)
+          updateRecipeCount()
+          return;
+        }
+    } 
+    else if (query==""){
+      resetCards()
+      updateRecipeCount()
+    } 
+  
 }
+
+
+function updateRecipeCount() {
+    let visibleRecipesList=document.querySelectorAll(".card[data-visible='true']")
+    let nb = visibleRecipesList.length;
+    nb_recettes.textContent = nb + " recettes";
+}
+
+// Call this function every time `visibleRecipesList` is updated
 
 
 function resetCards(){
@@ -85,6 +118,10 @@ function resetCards(){
     cards.forEach((card)=>{
         card.setAttribute("data-visible","true")
     })
+    queryInput.value="";
+    resultmsg.remove();
+    updateRecipeCount()
+   
 
 }
 
