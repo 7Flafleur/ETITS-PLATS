@@ -1,5 +1,12 @@
 //VARIABLES
 
+function filterSearchbar(visibleRecipesArray,input,){
+
+
+
+
+}
+
 
 
 
@@ -43,6 +50,9 @@ function filterDropDown(button, dropdown, input, items) {
 }
 
 
+
+
+
 // //on click on item, close dropdown, create tag
  function createTag(item,tag){
     let parent=item.parentNode
@@ -69,7 +79,6 @@ function findCards(term){
 }
 
 
-
 function resetCards(){
     //cards.removeAttribute
     const cards=document.querySelectorAll(".card")
@@ -82,20 +91,10 @@ function resetCards(){
 
 
 
-
-
-
-
-
-
-
-
-
-
 //call filterDropDown function
 
 filterDropDown(
-  document.getElementById('toggle1'),
+  document.getElementById('toggle1'), // 
   document.getElementById('dropdown1'),
   document.getElementById('inputIn'),
   IngredientsArray
