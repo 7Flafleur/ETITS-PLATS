@@ -8,7 +8,7 @@ const nb_recettes=document.querySelector(".nb_recipes")
  const loupe=document.getElementById("loupe");
  const queryInput=document.getElementById("queryInput")
 
- const resultmsg=document.getElementById("resultmsg")
+
 
  ///SELECT DROPDOWN////////////
  const ingredientsButton=document.getElementById('toggle1')
@@ -40,7 +40,8 @@ queryInput.value="";
 loupe.addEventListener("click", (event)=>
 { event.preventDefault();
   let query=queryInput.value.toUpperCase();
-  findCards(query)
+  findCards(query);
+  updateRecipeCount()
 })
 
 

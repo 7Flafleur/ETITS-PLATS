@@ -70,22 +70,15 @@ function findCards(query){
             else{
               recipe.dataset.visible="true";
             }
-  updateRecipeCount()
+            visibleRecipesList=document.querySelectorAll(".card[data-visible='true' ]")
+        updateRecipeCount()
     
   
         });
         if(visibleRecipesList.length==0){
-          console.log("Aucune recette trouvée!")
-          if(resultmsg!=null)
-          {
-           resultmsg.remove()
-          }
-          resultmsg=document.createElement("h2")
-          resultmsg.setAttribute("id", "resultmsg")
-          resultmsg.textContent="Aucune recette trouvée"
-          recipesection.append(resultmsg)
-          updateRecipeCount()
-          return;
+        displayNoResults();
+        
+          
         }
     } 
     else if (query==""){
@@ -93,6 +86,15 @@ function findCards(query){
       updateRecipeCount()
     } 
   
+}
+
+
+
+
+
+function displayNoResults(){
+    const resultmsg=document.getElementById("resultmsg")
+    resultmsg.textContent="Aucune recette trouvée";
 }
 
 
@@ -112,7 +114,7 @@ function resetCards(){
         card.setAttribute("data-visible","true")
     })
     queryInput.value="";
-    resultmsg.remove();
+    resultmsg.textContent=""
     updateRecipeCount()
    
 
