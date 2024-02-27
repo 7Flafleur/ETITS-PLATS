@@ -1,12 +1,6 @@
 //VARIABLES
 
 
-
-
-
-
-
-
 function filterDropDown(button, dropdown, input, items) {
     //create dropdown items from list of items
     items.forEach((item) =>{
@@ -64,8 +58,7 @@ function filterDropDown(button, dropdown, input, items) {
 function findCards(query){
     if (query.length >= 3) {
         console.log(query);
-        let visibleRecipesList=document.querySelectorAll(".card[data-visible='true' ]")
-        
+        let visibleRecipesList=document.querySelectorAll(".card[data-visible='true' ]")      
         visibleRecipesList.forEach((recipe) => {
             let titre = recipe.querySelector("h2").textContent.toUpperCase();
             let recette = recipe.querySelector(".card_content-recette").textContent.toUpperCase();
@@ -130,25 +123,3 @@ function resetCards(){
 
 //call filterDropDown function
 
-filterDropDown(
-  document.getElementById('toggle1'), // 
-  document.getElementById('dropdown1'),
-  document.getElementById('inputIn'),
-  IngredientsArray
-)
-
-
-filterDropDown(
-    document.getElementById('toggle2'),
-    document.getElementById('dropdown2'),
-    document.getElementById('inputA'),
-    AppareilsList
-)
-
-
-filterDropDown(
-  document.getElementById('toggle3'),
-  document.getElementById('dropdown3'),
-  document.getElementById('inputU'),
-  UstensilesList
-)
