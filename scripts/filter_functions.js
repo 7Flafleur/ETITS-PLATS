@@ -80,11 +80,6 @@ function findCards(query) {
   if (visibleRecipesList.length == 0) {
     displayNoResults();
   }
-
-  if (query == "") {
-    resetCards();
-    updateRecipeCount();
-  }
 }
 
 function displayNoResults() {

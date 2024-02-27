@@ -38,7 +38,10 @@ loupe.addEventListener("click", (event) => {
   if (query.length >= 3) {
     findCards(query);
   }
-
+  else if (query == "") {
+    resetCards();
+   
+  }
   updateRecipeCount();
 });
 
