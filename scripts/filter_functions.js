@@ -23,7 +23,7 @@ function filterDropDown(button, dropdown, input, items,cat) {
 
   input.addEventListener("input", function () {
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
-    if (input.value.length >= 3) {
+    
       if (!dropdown_items) return false;
       for (let i = 0; i < dropdown_items.length; i++) {
         if (
@@ -34,7 +34,7 @@ function filterDropDown(button, dropdown, input, items,cat) {
           dropdown_items[i].style.display = "block";
         else dropdown_items[i].style.display = "none";
       }
-    }
+    
     updateRecipeCount();
   });
 }
@@ -52,6 +52,10 @@ function createTag(item, tag) {
 
 function findCardsSearch(query) {
   console.log(query);
+  if(!filterBy.includes(query)){
+    filterBy.push(query)
+  }
+  console.log("Filter by ",filterBy)
   let visibleRecipesList = document.querySelectorAll(
     ".card[data-visible='true' ]"
   );
@@ -69,7 +73,7 @@ function findCardsSearch(query) {
       !ingredients.includes(query)
     ) {
       recipe.dataset.visible = "false";
-      console.log("not included");
+      // console.log("not included");
     } else {
       recipe.dataset.visible = "true";
     }
@@ -84,13 +88,15 @@ function findCardsSearch(query) {
 }
 
 function findCardsSelect(query){
-    console.log(query);
+    // console.log(query);
+    filterBy.push(query)
+    console.log("Filter by ", filterBy)
     let visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
     visibleRecipesList.forEach((recipe) => {
         let cardContent = recipe.textContent.toUpperCase();
         if (!cardContent.includes(query)) {
             recipe.dataset.visible = "false";
-            console.log("not included");
+            // console.log("not included");
         } else {
             recipe.dataset.visible = "true";
         }
@@ -114,7 +120,11 @@ function updateRecipeCount() {
     ".card[data-visible='true']"
   );
   let nb = visibleRecipesList.length;
-  nb_recettes.textContent = nb + " recettes";
+  if(nb==1){
+    nb_recettes.textContent = nb + " recette";
+  }
+  else{nb_recettes.textContent = nb + " recettes"; }
+  
 }
 
 // Call this function every time `visibleRecipesList` is updated
@@ -130,15 +140,32 @@ function resetCards() {
   updateRecipeCount();
 }
 
+function resetSearchfilter(){
+  filterBy=[];
+}
+
 //call filterDropDown function
 
-function removeSelectFilter(tag,category){
+function removeSelectFilter(tag){
     let invisibleRecipesList = document.querySelectorAll(
         ".card[data-visible='false' ]")
-        invisibleRecipesList.forEach((invisiblerecipe)=>{
-            if (!category.includes(tag)){
-                invisiblerecipe.dataset.visible='true'
-            }
-        })
+        console.log("filters before ",filterBy)
+        let index=filterBy.indexOf(tag)
+        if (index !== -1) {
+          filterBy.splice(index, 1);
+      }
+      console.log("Filters after ",filterBy)
+     
 
+        invisibleRecipesList.forEach((invisiblerecipe)=>{
+          let textContent = invisiblerecipe.textContent.toUpperCase();
+
+          let containsAllTags = filterBy.every(tag => textContent.includes(tag.toUpperCase()));
+      
+          if (containsAllTags) {
+              invisiblerecipe.dataset.visible="true";
+          } 
+
+        })
+ updateRecipeCount()
 }

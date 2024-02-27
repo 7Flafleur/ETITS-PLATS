@@ -20,6 +20,8 @@ const ustensileButton = document.getElementById("toggle3");
 const ustensileSelect = document.getElementById("dropdown3");
 const ustensileInput = document.getElementById("inputU");
 
+let filterBy=[];
+
 //////////////MAIN CODE///////////////////////
 displayCards(recipes);
 updateRecipeCount();
@@ -36,10 +38,12 @@ loupe.addEventListener("click", (event) => {
   event.preventDefault();
   let query = queryInput.value.toUpperCase();
   if (query.length >= 3) {
+    filterBy.push(query)
     findCardsSearch(query);
   }
   else if (query == "") {
     resetCards();
+    resetSearchfilter();
    
   }
   updateRecipeCount();
@@ -87,7 +91,7 @@ visibleSelectItems.forEach((item) => {
     //remove tag on click
     let searchtags = document.querySelectorAll(".searchtag");
 
-    console.log(searchtags);
+    
 
     //remove tag on click
     searchtags.forEach((item) => {
@@ -95,14 +99,18 @@ visibleSelectItems.forEach((item) => {
         let term = event.currentTarget.textContent;
         console.log(term);
         event.currentTarget.remove();
+        removeSelectFilter(tag)
       });
     });
 
     //////////RUN SEARCH FUNCTION////////////////////
     findCardsSelect(tag);
+    updateRecipeCount();
+    
   });
 });
 
 //////////RESET BUTTON FOR TESTING////////////////////
 const reset = document.getElementById("reset");
 reset.addEventListener("click", resetCards);
+reset.addEventListener("click", resetSearchfilter())
