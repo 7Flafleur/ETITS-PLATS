@@ -165,7 +165,7 @@ function removeSelectFilter(tag){
           if (containsAllTags) {
               invisiblerecipe.dataset.visible="true";
           } 
-
+resultmsg.textContent="";
         })
  updateRecipeCount()
 }
