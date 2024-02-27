@@ -7,13 +7,20 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   border: grey solid 1px;
   width: 100%;
   height: 667px;
-
+position: relative;
   background-image: url(../pictures/lampos-aritonang-24gR_9lCdes-unsplash\ 1.png);
 }
+
+.logo{
+  position: absolute;
+  left: 20px;
+  top:20px;
+}
+
 
 h1 {
   color: #ffd15b;
@@ -234,6 +241,19 @@ line-height: normal;
 
 .nb_recipes {
   font-family: $header-font;
+}
+
+#resultmsg{
+  
+  color: #ffd15b;
+  text-align: center;
+  font-family: $header-font;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+
 }
 
 .card {

@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Les Petits Plats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/custom.css"></link>
-    <link href="favicon.ico" rel="icon" />
-    <link rel="shortcut icon" href="#" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les Petits Plats</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  </link>
+  <link href="favicon.ico" rel="icon" />
+  <link rel="shortcut icon" href="#" />
 </head>
 
 <body>
-    <header>
-       <img src="/pictures/Logo.png" alt="" class="logo">
-        <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES 
-            DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
-        <form action="#" method="get" id="searchbar">
-            <input type="search" id="queryInput" name="q" placeholder="Recherche...">  
-            <button type="submit" id="loupe"><img src="/pictures/Group 4.svg" alt="loupe"></button>
-        </form>
-    </header>
-    <main>
-<section class="sort">
+  <header>
+    <img src="/pictures/Logo.png" alt="" class="logo">
+    <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES
+      DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+    <form action="#" method="get" id="searchbar">
+      <input type="search" id="queryInput" name="q" placeholder="Recherche...">
+      <button type="submit" id="loupe"><img src="/pictures/Group 4.svg" alt="loupe"></button>
+    </form>
+  </header>
+  <main>
+    <section class="sort">
       <div class="dropdown_container">
         <div class="searchsort">
           <button id="toggle1">Ingrédients</button>
           <ul id="dropdown1">
-              <input type="text" id="inputIn" placeholder="ingrédient ...">
+            <input type="text" id="inputIn" placeholder="ingrédient ...">
           </ul>
         </div>
         <div class="searchsort">
           <button id="toggle2">Appareils</button>
           <ul id="dropdown2">
-              <input type="text" id="inputA" placeholder="appareil ...">
+            <input type="text" id="inputA" placeholder="appareil ...">
           </ul>
         </div>
         <div class="searchsort">
           <button id="toggle3">Ustensiles</button>
           <ul id="dropdown3">
-              <input type="text" id="inputU" placeholder="ustensile ...">
+            <input type="text" id="inputU" placeholder="ustensile ...">
           </ul>
         </div>
       </div>
@@ -48,20 +51,20 @@
       <div class="reset">
         <button id="reset">RESET</button>
       </div>
-       
-  
-  <span class="nb_recipes"></span>
-</section>
-<section class="tag_section">
-   
 
-  </section>
-<section class="card_container">
-  <div id="resultmsg"></div>
- 
 
-</section>
-    </main>
+      <span class="nb_recipes"></span>
+    </section>
+    <section class="tag_section">
+
+
+    </section>
+    <section class="card_container">
+      <div id="resultmsg"></div>
+
+
+    </section>
+  </main>
 </body>
 <script src="scripts/recipes.js"></script>
 <script src="scripts/categories.js"></script>
