@@ -36,7 +36,7 @@ loupe.addEventListener("click", (event) => {
   event.preventDefault();
   let query = queryInput.value.toUpperCase();
   if (query.length >= 3) {
-    findCards(query);
+    findCardsSearch(query);
   }
   else if (query == "") {
     resetCards();
@@ -99,7 +99,7 @@ visibleSelectItems.forEach((item) => {
     });
 
     //////////RUN SEARCH FUNCTION////////////////////
-    findCards(tag);
+    findCardsSelect(tag);
   });
 });
 

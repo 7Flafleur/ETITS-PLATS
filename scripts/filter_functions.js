@@ -50,7 +50,7 @@ function createTag(item, tag) {
   tagsection.append(searchtag);
 }
 
-function findCards(query) {
+function findCardsSearch(query) {
   console.log(query);
   let visibleRecipesList = document.querySelectorAll(
     ".card[data-visible='true' ]"
@@ -81,6 +81,27 @@ function findCards(query) {
   if (visibleRecipesList.length == 0) {
     displayNoResults();
   }
+}
+
+function findCardsSelect(query){
+    console.log(query);
+    let visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
+    visibleRecipesList.forEach((recipe) => {
+        let cardContent = recipe.textContent.toUpperCase();
+        if (!cardContent.includes(query)) {
+            recipe.dataset.visible = "false";
+            console.log("not included");
+        } else {
+            recipe.dataset.visible = "true";
+        }
+    });
+
+    visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
+    updateRecipeCount();
+
+    if (visibleRecipesList.length == 0) {
+        displayNoResults();
+    }
 }
 
 function displayNoResults() {

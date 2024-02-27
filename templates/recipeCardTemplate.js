@@ -35,6 +35,7 @@ function RecipeCardTemplate(data) {
         const h4=document.createElement("h4");
         h4.textContent="Recette"
         recette.setAttribute("class", "card_content-recette");
+        
         recette.textContent = description;
         cardcontent.append(h4)
         cardcontent.append(recette);
