@@ -1,11 +1,12 @@
 //VARIABLES
 
-function filterDropDown(button, dropdown, input, items) {
+function filterDropDown(button, dropdown, input, items,cat) {
   //create dropdown items from list of items
   items.forEach((item) => {
     let dropdown_item = document.createElement("li");
     dropdown_item.setAttribute("data-visible", "true");
     dropdown_item.setAttribute("class", "dropdown-item");
+    dropdown_item.dataset.category=cat
     dropdown_item.innerHTML = item;
     dropdown.appendChild(dropdown_item);
   });
@@ -109,3 +110,14 @@ function resetCards() {
 }
 
 //call filterDropDown function
+
+function removeSelectFilter(tag,category){
+    let invisibleRecipesList = document.querySelectorAll(
+        ".card[data-visible='false' ]")
+        invisibleRecipesList.forEach((invisiblerecipe)=>{
+            if (!category.includes(tag)){
+                invisiblerecipe.dataset.visible='true'
+            }
+        })
+
+}

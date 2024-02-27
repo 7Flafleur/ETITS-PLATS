@@ -50,16 +50,22 @@ filterDropDown(
   ingredientsButton, //
   ingredientsSelect,
   ingredientsInput,
-  IngredientsArray
+  IngredientsArray,
+  "ingr"
 );
 
-filterDropDown(appareilsButton, appareilsSelect, appareilsInput, AppareilsList);
+filterDropDown(
+  appareilsButton,
+   appareilsSelect, 
+   appareilsInput,
+    AppareilsList,"App");
 
 filterDropDown(
   ustensileButton,
   ustensileSelect,
   ustensileInput,
-  UstensilesList
+  UstensilesList,
+  "ust"
 );
 
 //apply cklickfunction to visible elements in dropdown

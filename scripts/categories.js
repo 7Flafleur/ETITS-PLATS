@@ -26,7 +26,7 @@ ingredientslistarray.forEach((inglist)=>{
 // console.log(typeof(ingredientsarray))
 
 
-ingredientsarray=ingredientsarray.map(ingredient=>ingredient.toLowerCase())
+ingredientsarray=ingredientsarray.map(ingredient=>ingredient.toUpperCase())
 
 const IngredientsList=new Set(ingredientsarray)
 
@@ -46,7 +46,7 @@ const appareilslist=[]
 
 recipes.forEach((recipe)=>{
     appareil=recipe.appliance
-    appareilslist.push(appareil)
+    appareilslist.push(appareil.toUpperCase())
 })
 
 const AppareilsList = Array.from(new Set(appareilslist));
@@ -81,7 +81,7 @@ ustensilelistarray.forEach((ustenlist)=>{
 
     })
 })
-ustensilelist=ustensilelist.map(ustensile=>ustensile.toLowerCase())
+ustensilelist=ustensilelist.map(ustensile=>ustensile.toUpperCase())
 
 let UstensilesList=new Set(ustensilelist)
 
