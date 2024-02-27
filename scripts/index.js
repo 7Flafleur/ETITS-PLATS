@@ -72,10 +72,15 @@ filterDropDown(
   "ust"
 );
 
+ ////////////SELECT SEARCH FUNCTION/////////////////
+
+
+
 //apply cklickfunction to visible elements in dropdown
 let visibleSelectItems = document.querySelectorAll(
   ".dropdown-item[data-visible]"
 );
+
 
 //get clicked item
 let dropdownitems = document.querySelectorAll("dropdown-item");
@@ -85,15 +90,11 @@ visibleSelectItems.forEach((item) => {
   item.addEventListener("click", (event) => {
     let tag = event.currentTarget.textContent;
     // console.log(tag);
-
-    // Add more functions here
     createTag(item, tag);
+
+
     //remove tag on click
     let searchtags = document.querySelectorAll(".searchtag");
-
-    
-
-    //remove tag on click
     searchtags.forEach((item) => {
       item.addEventListener("click", (event) => {
         let term = event.currentTarget.textContent;
@@ -109,6 +110,45 @@ visibleSelectItems.forEach((item) => {
     
   });
 });
+
+/////////make selectsearch accessible via keys/////////
+
+document.addEventListener("keydown", (e) => {
+  //down key
+  if (e.key === 'ArrowDown') {
+    console.log("downArrowKey was pressed")
+  }
+
+  //upkey
+  else if (e.key === 'ArrowUp') {
+    console.log("upArrowKey was pressed")
+  }
+
+  //Enter key
+  else if (e.key === "Enter") {
+    console.log("Enter key was pressed")
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //////////RESET BUTTON FOR TESTING////////////////////
 const reset = document.getElementById("reset");
