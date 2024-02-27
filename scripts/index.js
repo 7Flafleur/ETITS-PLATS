@@ -26,6 +26,7 @@ let filterBy=[];
 displayCards(recipes);
 updateRecipeCount();
 queryInput.value = "";
+filterBy=[];
 
 /////////////EVENT LISTENER FOR SEARCHBAR ///////////////////////
 //  queryInput.addEventListener("input", (event) => {
@@ -34,11 +35,71 @@ queryInput.value = "";
 
 // });
 
+queryInput.addEventListener("input",(event) => {
+  event.preventDefault();
+  let query = queryInput.value.toUpperCase();
+  let spchars=['<', '>', '/']
+  if(spchars.some(char => query.includes(char)))
+  {console.log("charactères erronés")
+ return false}
+  if (query.length >= 3) {
+    
+    findCardsSearch(query);
+  }
+  else if (query == "") {
+    resetCards();
+    resetSearchfilter();
+   
+  }
+  updateRecipeCount();
+} )
+
+queryInput.addEventListener("input",(event) => {
+  if (event.key==="Enter")
+  event.preventDefault();
+  let query = queryInput.value.toUpperCase();
+  let spchars=['<', '>', '/']
+  if(spchars.some(char => query.includes(char)))
+  {console.log("charactères erronés")
+ return false}
+  if (query.length >= 3) {
+    
+    findCardsSearch(query);
+  }
+  else if (query == "") {
+    resetCards();
+    resetSearchfilter();
+   
+  }
+  updateRecipeCount();
+} )
+
+queryInput.addEventListener("keyup", (event) => {
+  if (event.key === 'Backspace') {
+      // A deletion has occurred
+      console.log("sup")
+      console.log( document.querySelectorAll(
+        ".card"
+      ))
+      filterBy.pop(); // Remove the last search term
+      console.log(filterBy[filterBy.length - 1])
+      findCardsSearch(queryInput.value.toUpperCase());
+  } 
+
+});
+
+
+
+
 loupe.addEventListener("click", (event) => {
   event.preventDefault();
   let query = queryInput.value.toUpperCase();
+  let spchars=['<', '>', '/']
+  if(spchars.some(char => query.includes(char)))
+  {console.log("charactères erronés")
+ return false}
   if (query.length >= 3) {
-    filterBy.push(query)
+    
     findCardsSearch(query);
   }
   else if (query == "") {

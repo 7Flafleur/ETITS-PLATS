@@ -23,7 +23,11 @@ function filterDropDown(button, dropdown, input, items,cat) {
 
   input.addEventListener("input", function () {
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
-    
+    let spchars=['<', '>', '/']
+     if(spchars.some(char => input.value.includes(char)))
+     {console.log("charactères erronés")
+    return false}
+   
       if (!dropdown_items) return false;
       for (let i = 0; i < dropdown_items.length; i++) {
         if (
@@ -37,7 +41,9 @@ function filterDropDown(button, dropdown, input, items,cat) {
     
     updateRecipeCount();
   });
+  
 }
+
 
 // //on click on item, close dropdown, create tag
 function createTag(item, tag) {
@@ -56,10 +62,9 @@ function findCardsSearch(query) {
     filterBy.push(query)
   }
   console.log("Filter by ",filterBy)
-  let visibleRecipesList = document.querySelectorAll(
-    ".card[data-visible='true' ]"
-  );
-  visibleRecipesList.forEach((recipe) => {
+  let allRecipesList = document.querySelectorAll(".card");
+
+  allRecipesList.forEach((recipe) => {
     let titre = recipe.querySelector("h2").textContent.toUpperCase();
     let recette = recipe
       .querySelector(".card_content-recette")
@@ -76,8 +81,9 @@ function findCardsSearch(query) {
       // console.log("not included");
     } else {
       recipe.dataset.visible = "true";
+      resultmsg.textContent="";
     }
-    visibleRecipesList = document.querySelectorAll(
+     visibleRecipesList = document.querySelectorAll(
       ".card[data-visible='true' ]"
     );
     updateRecipeCount();
@@ -85,6 +91,10 @@ function findCardsSearch(query) {
   if (visibleRecipesList.length == 0) {
     displayNoResults();
   }
+}
+
+function findCardsSearchDelete(){
+
 }
 
 function findCardsSelect(query){
