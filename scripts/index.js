@@ -24,22 +24,26 @@ const nb_recettes=document.querySelector(".nb_recipes")
  const ustensileInput=  document.getElementById('inputU')
 
 
- 
-
-
-
-
 
  //////////////MAIN CODE///////////////////////
 displayCards(recipes);
 updateRecipeCount();
+queryInput.value="";
 
 /////////////EVENT LISTENER FOR SEARCHBAR ///////////////////////
- queryInput.addEventListener("input", (event) => {
-  let query = event.target.value.toUpperCase();
-findCards(query);
+//  queryInput.addEventListener("input", (event) => {
+//   let query = event.target.value.toUpperCase();
+// findCards(query);
 
-});
+// });
+
+loupe.addEventListener("click", (event)=>
+{ event.preventDefault();
+  let query=queryInput.value.toUpperCase();
+  findCards(query)
+})
+
+
 
 ////////CREATE SELECT MENUS//////////////////////
 filterDropDown(
