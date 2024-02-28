@@ -93,9 +93,7 @@ function findCardsSearch(query) {
   }
 }
 
-function findCardsSearchDelete(){
 
-}
 
 function findCardsSelect(query){
     // console.log(query);

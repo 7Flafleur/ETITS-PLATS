@@ -105,6 +105,11 @@ loupe.addEventListener("click", (event) => {
   else if (query == "") {
     resetCards();
     resetSearchfilter();
+    let searchtags=document.querySelectorAll(".searchtag")
+
+    searchtags.forEach((searchtag)=>{
+      searchtag.remove()
+    })
    
   }
   updateRecipeCount();
