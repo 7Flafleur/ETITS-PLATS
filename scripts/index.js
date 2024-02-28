@@ -20,6 +20,8 @@ const ustensileButton = document.getElementById("toggle3");
 const ustensileSelect = document.getElementById("dropdown3");
 const ustensileInput = document.getElementById("inputU");
 
+
+
 let filterBy=[];
 
 //////////////MAIN CODE///////////////////////
@@ -110,6 +112,7 @@ loupe.addEventListener("click", (event) => {
     searchtags.forEach((searchtag)=>{
       searchtag.remove()
     })
+
    
   }
   updateRecipeCount();
@@ -167,6 +170,8 @@ visibleSelectItems.forEach((item) => {
         console.log(term);
         event.currentTarget.remove();
         removeSelectFilter(tag)
+        const tagsection = document.querySelector(".tag_section");
+        tagsection.removeAttribute("data-active")
       });
     });
 

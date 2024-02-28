@@ -14,6 +14,8 @@ function RecipeCardTemplate(data) {
         cardImg.style.backgroundImage = `url(../pictures/${image})`;
         cardImg.style.backgroundSize = 'cover';
         cardImg.style.backgroundPosition = 'center';
+        cardImg.style.width = '100%'; // Set the width
+        cardImg.style.height = '253px'; // Set the height
         recipecard.append(cardImg)
 
         //timetag

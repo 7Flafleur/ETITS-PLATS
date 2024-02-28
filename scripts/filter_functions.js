@@ -54,6 +54,7 @@ function createTag(item, tag) {
   searchtag.textContent = tag;
   const tagsection = document.querySelector(".tag_section");
   tagsection.append(searchtag);
+  tagsection.dataset.active='true'
 }
 
 function findCardsSearch(query) {
@@ -120,6 +121,7 @@ function findCardsSelect(query){
 
 function displayNoResults() {
   const resultmsg = document.getElementById("resultmsg");
+  resultmsg.dataset.active="true"
   resultmsg.textContent = "Aucune recette trouvée";
 }
 
