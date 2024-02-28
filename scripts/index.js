@@ -27,6 +27,32 @@ let filterBy=[];
 //////////////MAIN CODE///////////////////////
 displayCards(recipes);
 updateRecipeCount();
+let IngredientsArray=getIngredientsList(recipes)
+let AppareilsList=getApparails(recipes)
+let UstensilesList=getUstensilesList(recipes)
+
+filterDropDown(
+  ingredientsButton, //
+  ingredientsSelect,
+  ingredientsInput,
+  IngredientsArray,
+  "ingr"
+);
+
+filterDropDown(
+  appareilsButton,
+   appareilsSelect, 
+   appareilsInput,
+    AppareilsList,"App");
+
+filterDropDown(
+  ustensileButton,
+  ustensileSelect,
+  ustensileInput,
+  UstensilesList,
+  "ust"
+);
+
 queryInput.value = "";
 filterBy=[];
 
@@ -119,27 +145,6 @@ loupe.addEventListener("click", (event) => {
 });
 
 ////////CREATE SELECT MENUS//////////////////////
-filterDropDown(
-  ingredientsButton, //
-  ingredientsSelect,
-  ingredientsInput,
-  IngredientsArray,
-  "ingr"
-);
-
-filterDropDown(
-  appareilsButton,
-   appareilsSelect, 
-   appareilsInput,
-    AppareilsList,"App");
-
-filterDropDown(
-  ustensileButton,
-  ustensileSelect,
-  ustensileInput,
-  UstensilesList,
-  "ust"
-);
 
  ////////////SELECT SEARCH FUNCTION/////////////////
 

@@ -1,5 +1,7 @@
 //VARIABLES
 
+
+
 function filterDropDown(button, dropdown, input, items,cat) {
   //create dropdown items from list of items
   items.forEach((item) => {
@@ -44,6 +46,53 @@ function filterDropDown(button, dropdown, input, items,cat) {
   
 }
 
+function newFilterDropdown( dropdown,recipelist){
+  dropdown.innerHTML=""
+  recipelist.forEach((item) => {
+    let dropdown_item = document.createElement("li");
+    dropdown_item.setAttribute("data-visible", "true");
+    dropdown_item.setAttribute("class", "dropdown-item");
+    
+    dropdown_item.innerHTML = item;
+    dropdown.appendChild(dropdown_item);
+  });
+  //hide the dropdown list
+  dropdown.style.display = "none";
+
+}
+
+
+//////////////////////////////////////////////////
+
+// function showDropdown () {
+//   if (dropdown.style.display == "none") dropdown.style.display = "block";
+//   else dropdown.style.display = "none";
+// }
+
+
+// function filterQuery () {
+//   let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
+//   let spchars=['<', '>', '/']
+//    if(spchars.some(char => input.value.includes(char)))
+//    {console.log("charactères erronés")
+//   return false}
+ 
+//     if (!dropdown_items) return false;
+//     for (let i = 0; i < dropdown_items.length; i++) {
+//       if (
+//         dropdown_items[i].innerHTML
+//           .toUpperCase()
+//           .includes(input.value.toUpperCase())
+//       )
+//         dropdown_items[i].style.display = "block";
+//       else dropdown_items[i].style.display = "none";
+//     }
+  
+//   updateRecipeCount();
+// }
+
+
+
 
 // //on click on item, close dropdown, create tag
 function createTag(item, tag) {
@@ -56,6 +105,14 @@ function createTag(item, tag) {
   tagsection.append(searchtag);
   tagsection.dataset.active='true'
 }
+
+
+
+
+
+
+
+
 
 function findCardsSearch(query) {
   console.log(query);
@@ -92,6 +149,49 @@ function findCardsSearch(query) {
   if (visibleRecipesList.length == 0) {
     displayNoResults();
   }
+
+  //nex recipelist for nexw selcts
+
+  let newRecipeList = [];
+
+  newRecipeList = recipes.filter(recipe => 
+      recipe.name.toUpperCase().includes(query) || 
+      recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
+      recipe.description.toUpperCase().includes(query)
+  );
+  
+  console.log("New recipe list",newRecipeList);
+
+let IngredientsArray=getIngredientsList(newRecipeList);
+let AppareilsList=getApparails(newRecipeList)
+let UstensilesList=getUstensilesList(newRecipeList)
+
+console.log(IngredientsArray)
+console.log(AppareilsList)
+console.log(UstensilesList)
+
+newFilterDropdown(
+    //
+    ingredientsSelect,
+    
+    IngredientsArray
+    
+  );
+
+  newFilterDropdown(
+    
+     appareilsSelect, 
+    
+      AppareilsList);
+  
+  newFilterDropdown(
+    
+    ustensileSelect,
+    
+    UstensilesList
+    
+  );
+
 }
 
 
