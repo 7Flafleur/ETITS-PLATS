@@ -8,7 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+
     rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
   <link rel="stylesheet" type="text/css" href="css/custom.css">
   </link>
   <link href="favicon.ico" rel="icon" />
@@ -29,28 +32,34 @@
     <section class="sort">
       <div class="dropdown_container">
         <div class="searchsort">
-          <button id="toggle1">Ingrédients</button>
+          <div id="toggle1" class="button">Ingrédients <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+          </svg></div>
           <ul id="dropdown1">
             <input type="text" id="inputIn" placeholder="ingrédient ...">
           </ul>
         </div>
         <div class="searchsort">
-          <button id="toggle2">Appareils</button>
+          <div id="toggle2" class="button">Appareils  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+          </svg></div>
           <ul id="dropdown2">
             <input type="text" id="inputA" placeholder="appareil ...">
           </ul>
         </div>
         <div class="searchsort">
-          <button id="toggle3">Ustensiles</button>
+          <div id="toggle3" class="button">Ustensiles <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+            <path d="M1 1L7.5 7L14 1" stroke="#1B1B1B" stroke-linecap="round"/>
+          </svg></div>
           <ul id="dropdown3">
             <input type="text" id="inputU" placeholder="ustensile ...">
           </ul>
         </div>
       </div>
 
-      <div class="reset">
+      <!-- <div class="reset">
         <button id="reset">RESET</button>
-      </div>
+      </div> -->
 
 
       <span class="nb_recipes"></span>

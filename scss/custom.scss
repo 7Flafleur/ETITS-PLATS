@@ -48,7 +48,7 @@ h1 {
     border: none;
     background-color: transparent;
   }
-  button {
+button {
     background: black;
     border: none;
     width: 51px;
@@ -73,13 +73,35 @@ main {
     font-size: 16px;
   }
 
-  button {
+  .button {
     width: 100%;
-    height: 51px;
+    height: 22px;
     background-color: #fff;
     border-radius: 14px;
+    display: inline-flex;
+padding: 17px 16px;
+align-items: center;
+gap: 63px;
+border-radius: 11px;
+color: Black;
+font-family: Manrope;
+font-size: 16px;
+font-style: normal;
+
+line-height: normal;
+
   }
 }
+
+svg{
+  width: 13px;
+height: 6px;
+stroke-width: 2px;
+padding:0;
+margin:0;
+  
+}
+
 
 //*DROPDOWN test*///////////////
 
@@ -115,11 +137,7 @@ main {
   background-color: rgba(0, 204, 255, 0.459);
 }
 
-#toggle1,
-#toggle2,
-#toggle3 {
-  font-size: 16px;
-}
+
 
 .dropdown_container {
  
@@ -129,19 +147,6 @@ main {
   gap: 55px;
 }
 
-/* Dropdown Button */
-.dropbtn {
-  font-family: $text-font;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  cursor: pointer;
-}
-
-.dropbtn::after {
-  content: " \00a0  \25bc";
-}
 
 .labels {
   display: none;
@@ -399,7 +404,7 @@ text-transform: uppercase;
 }
 
 
-@media (min-width: 414px) and (max-width: 810px) {
+@media (min-width: 413px) and (max-width: 810px) {
   h1{
     width:90%
   }
@@ -409,17 +414,57 @@ text-transform: uppercase;
     flex-direction: column;
   }
 
+  .dropdown_container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nb_recipes{
+    position: unset;
+  }
+
   .card_container{
     padding:0 10px;
   }
 
-  .nb_recipes{
-    position:relative;
-    left:50px;
+  
+
+  .tag_section{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+
+  #resultmsg{
+    padding: 50px 0px;
+    font-size: 38px;
   }
 
   .card{
     width:100%;
   }
 
+}
+
+@media(min-width:810px) and (max-width:1024px){
+
+  .sort{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+    padding:10px;
+  }
+
+  .dropdown_container{
+    border:yellow solid 1px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nb_recipes{
+
+  }
 }
