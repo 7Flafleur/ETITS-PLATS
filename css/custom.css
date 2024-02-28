@@ -225,6 +225,7 @@ main {
 
 .nb_recipes {
   font-family: "Anton";
+  font-size: 21px;
 }
 
 #resultmsg {
@@ -368,6 +369,26 @@ main {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media (min-width: 414px) and (max-width: 810px) {
+  h1 {
+    width: 90%;
+  }
+  .sort, .card_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .card_container {
+    padding: 0 10px;
+  }
+  .nb_recipes {
+    position: relative;
+    left: 50px;
+  }
+  .card {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=custom.css.map */
