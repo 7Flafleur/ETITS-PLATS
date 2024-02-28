@@ -217,6 +217,6 @@ document.addEventListener("keydown", (e) => {
 
 
 //////////RESET BUTTON FOR TESTING////////////////////
-const reset = document.getElementById("reset");
-reset.addEventListener("click", resetCards);
-reset.addEventListener("click", resetSearchfilter())
+// const reset = document.getElementById("reset");
+// reset.addEventListener("click", resetCards);
+// reset.addEventListener("click", resetSearchfilter())

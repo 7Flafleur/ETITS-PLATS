@@ -73,9 +73,31 @@ function RecipeCardTemplate(data) {
 
         })
 
+        //appliance,invisible
+
+        const appl=document.createElement("div")
+        appl.setAttribute("class", "hidden")
+        appl.textContent="Appareils: "+appliance
+
+        //ustensils, invisible
+
+        const ustensilsTemplate=document.createElement("template")
+        ustensilsTemplate.setAttribute("class","hidden")
+        const ustensilsListtemplate=document.createElement("ul")
+        ustensils.forEach((ustensil)=>{
+            const ust=document.createElement("li")
+            ust.setAttribute("class", "usts")
+            ust.textContent=ustensil
+            ustensilsListtemplate.append(ust)
+        })
+        ustensilsTemplate.append(ustensilsListtemplate)
+        
+
         
         cardcontent.append(h3);
         cardcontent.append(ingredientsDiv);
+        cardcontent.append(appl)
+        cardcontent.append(ustensilsTemplate)
 
         recipecard.append(cardcontent);
 
