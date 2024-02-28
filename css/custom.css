@@ -213,6 +213,10 @@ svg {
   line-height: normal;
 }
 
+.lightbox {
+  display: none;
+}
+
 .card_container {
   display: flex;
   flex-wrap: wrap;

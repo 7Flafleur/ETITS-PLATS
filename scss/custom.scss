@@ -235,7 +235,12 @@ font-weight: 400;
 line-height: normal;
 }
 
+.lightbox{
+  display: none;
+}
+
 ////////////////////////////////////////////
+/// 
 .card_container {
   display: flex;
   flex-wrap: wrap;
