@@ -340,7 +340,7 @@ svg {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  overflow: clip;
+  overflow: hidden;
 }
 
 .card_content-ingredients {
@@ -349,13 +349,17 @@ svg {
   height: 37%;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow: hidden;
+  overflow: clip;
+  word-wrap: break-word;
   padding-left: 0;
   align-items: flex-start;
   gap: 5px;
 }
 
 .ingredient {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   color: #1b1b1b;
   font-family: Manrope;
   font-size: 14px;
@@ -410,7 +414,7 @@ svg {
     width: 100%;
   }
 }
-@media (min-width: 810px) and (max-width: 1024px) {
+@media (min-width: 810px) and (max-width: 1081px) {
   .sort {
     display: flex;
     flex-direction: column;
@@ -422,6 +426,13 @@ svg {
     border: yellow solid 1px;
     flex-direction: column;
     align-items: center;
+  }
+  .card_container {
+    padding: 5px;
+    justify-content: center;
+  }
+  .card {
+    width: 45%;
   }
 }
 

@@ -49,7 +49,7 @@ function RecipeCardTemplate(data) {
 
         ingredients.forEach((ingredient)=>{
             const ingr=document.createElement("li")
-            ingr.setAttribute("class", ingredient)
+            ingr.setAttribute("class", "ingredient")
             ingr.textContent=ingredient.ingredient
             const br=document.createElement("br")
             const quant=document.createElement("span")
