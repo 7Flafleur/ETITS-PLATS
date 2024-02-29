@@ -152,8 +152,11 @@ function createTag(item, tag) {
   searchtag.setAttribute("class", "searchtag");
   searchtag.textContent = tag;
   const tagsection = document.querySelector(".tag_section");
-  tagsection.append(searchtag);
-  tagsection.dataset.active='true'
+  const content =tagsection.textContent
+  if(!content.includes(tag))
+ { tagsection.append(searchtag);
+  tagsection.dataset.active='true'}
+
 }
 
 
