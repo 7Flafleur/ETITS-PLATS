@@ -85,12 +85,16 @@ main {
   line-height: normal;
 }
 
-svg {
+.fa {
   width: 13px;
   height: 6px;
-  stroke-width: 2px;
+  stroke-width: 1px;
   padding: 0;
   margin: 0;
+}
+
+.fa-chevron-up {
+  display: none;
 }
 
 .searchsort {

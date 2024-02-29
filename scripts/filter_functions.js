@@ -32,6 +32,8 @@ function filterfunction () {
 
 function createfilterDropDown(button, dropdown, input, items) {
 
+  //empty list before creating it
+  dropdown.innerHTML=""
 
   //create dropdown items from list of items
   items.forEach((item) => {
@@ -48,17 +50,27 @@ function createfilterDropDown(button, dropdown, input, items) {
 
   //remove existing evetn listener
 
-  button.removeEventListener("click", function () {
-    if (dropdown.style.display == "none") dropdown.style.display = "block";
-    else dropdown.style.display = "none";
-  });
-
+  // button.removeEventListener("click", function () {
+  //   if (dropdown.style.display == "none") dropdown.style.display = "block";
+  //   else dropdown.style.display = "none";
+  // });
+const chevrondown=document.querySelector(".fa-chevron-down")
+const chevronup=document.querySelector(".fa-chevron-up")
 
   //make the button toggle the display of dropdown
-  button.addEventListener("click", function () {
-    if (dropdown.style.display == "none") dropdown.style.display = "block";
-    else dropdown.style.display = "none";
+  chevrondown.addEventListener("click", function () {
+    dropdown.style.display = "block";
+    console.log("listitem",dropdown.children.length)
+    chevronup.style.display="inline"
+    chevrondown.style.display="none"
   });
+
+
+chevronup.addEventListener("click", function(){
+  dropdown.style.display = "none"
+  chevrondown.style.display="inline"
+  chevronup.style.display="none"
+})
 
 
 
@@ -90,56 +102,6 @@ function createfilterDropDown(button, dropdown, input, items) {
   
 }
 
-
-
-// //AFTER RE/
-
-// function newcreatefilterDropDown( dropdown,recipelist){
-//   dropdown.innerHTML=""
-//   recipelist.forEach((item) => {
-//     let dropdown_item = document.createElement("li");
-//     dropdown_item.setAttribute("data-visible", "true");
-//     dropdown_item.setAttribute("class", "dropdown-item");
-    
-//     dropdown_item.innerHTML = item;
-//     dropdown.appendChild(dropdown_item);
-//   });
-//   //hide the dropdown list
-//   dropdown.style.display = "none";
-
-
-
-// }
-
-
-//////////////////////////////////////////////////
-
-// function showDropdown () {
-//   if (dropdown.style.display == "none") dropdown.style.display = "block";
-//   else dropdown.style.display = "none";
-// }
-
-
-// function filterQuery () {
-//   let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
-//   let spchars=['<', '>', '/']
-//    if(spchars.some(char => input.value.includes(char)))
-//    {console.log("charactères erronés")
-//   return false}
- 
-//     if (!dropdown_items) return false;
-//     for (let i = 0; i < dropdown_items.length; i++) {
-//       if (
-//         dropdown_items[i].innerHTML
-//           .toUpperCase()
-//           .includes(input.value.toUpperCase())
-//       )
-//         dropdown_items[i].style.display = "block";
-//       else dropdown_items[i].style.display = "none";
-//     }
-  
-//   updateRecipeCount();
-// }
 
 
 function searchSelectItems() {
@@ -205,7 +167,7 @@ function findCardsSearch(query) {
   if(!filterBy.includes(query)){
     filterBy.push(query)
   }
-  console.log("Filter by ",filterBy)
+  // console.log("Filter by ",filterBy)
   let allRecipesList = document.querySelectorAll(".card");
 
   allRecipesList.forEach((recipe) => {
@@ -252,9 +214,9 @@ let IngredientsArray=getIngredientsList(newRecipeList);
 let AppareilsList=getApparails(newRecipeList)
 let UstensilesList=getUstensilesList(newRecipeList)
 
-console.log(IngredientsArray)
-console.log(AppareilsList)
-console.log(UstensilesList)
+// console.log(IngredientsArray)
+// console.log(AppareilsList)
+// console.log(UstensilesList)
 
 createfilterDropDown(
   ingredientsButton, //
