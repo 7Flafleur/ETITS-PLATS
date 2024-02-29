@@ -31,7 +31,7 @@ let IngredientsArray=getIngredientsList(recipes)
 let AppareilsList=getApparails(recipes)
 let UstensilesList=getUstensilesList(recipes)
 
-filterDropDown(
+createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
   ingredientsInput,
@@ -39,13 +39,13 @@ filterDropDown(
   "ingr"
 );
 
-filterDropDown(
+createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
    appareilsInput,
     AppareilsList,"App");
 
-filterDropDown(
+createfilterDropDown(
   ustensileButton,
   ustensileSelect,
   ustensileInput,
@@ -55,6 +55,9 @@ filterDropDown(
 
 queryInput.value = "";
 filterBy=[];
+
+
+
 
 /////////////EVENT LISTENER FOR SEARCHBAR ///////////////////////
 //  queryInput.addEventListener("input", (event) => {
@@ -144,7 +147,6 @@ loupe.addEventListener("click", (event) => {
   updateRecipeCount();
 });
 
-////////CREATE SELECT MENUS//////////////////////
 
  ////////////SELECT SEARCH FUNCTION/////////////////
 
@@ -180,31 +182,51 @@ visibleSelectItems.forEach((item) => {
       });
     });
 
+
+   
+
     //////////RUN SEARCH FUNCTION////////////////////
     findCardsSelect(tag);
     updateRecipeCount();
     
   });
 });
+/////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /////////make selectsearch accessible via keys/////////
 
-document.addEventListener("keydown", (e) => {
-  //down key
-  if (e.key === 'ArrowDown') {
-    console.log("downArrowKey was pressed")
-  }
+// document.addEventListener("keydown", (e) => {
+//   //down key
+//   if (e.key === 'ArrowDown') {
+//     console.log("downArrowKey was pressed")
+//   }
 
-  //upkey
-  else if (e.key === 'ArrowUp') {
-    console.log("upArrowKey was pressed")
-  }
+//   //upkey
+//   else if (e.key === 'ArrowUp') {
+//     console.log("upArrowKey was pressed")
+//   }
 
-  //Enter key
-  else if (e.key === "Enter") {
-    console.log("Enter key was pressed")
-  }
-});
+//   //Enter key
+//   else if (e.key === "Enter") {
+//     console.log("Enter key was pressed")
+//   }
+// });
 
 
 

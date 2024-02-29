@@ -2,7 +2,14 @@
 
 
 
-function filterDropDown(button, dropdown, input, items,cat) {
+function createfilterDropDown(button, dropdown, input, items,cat) {
+
+    // Create input field
+    let dropdown_input = document.createElement("input");
+    dropdown_input.setAttribute("type", "text");
+    dropdown_input.setAttribute("class", "dropdown-input");
+    dropdown.appendChild(dropdown_input);
+
   //create dropdown items from list of items
   items.forEach((item) => {
     let dropdown_item = document.createElement("li");
@@ -23,7 +30,7 @@ function filterDropDown(button, dropdown, input, items,cat) {
 
   //filter function
 
-  input.addEventListener("input", function () {
+  dropdown_input.addEventListener("input", function () {
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
     let spchars=['<', '>', '/']
      if(spchars.some(char => input.value.includes(char)))
@@ -46,7 +53,7 @@ function filterDropDown(button, dropdown, input, items,cat) {
   
 }
 
-function newFilterDropdown( dropdown,recipelist){
+function newcreatefilterDropDown( dropdown,recipelist){
   dropdown.innerHTML=""
   recipelist.forEach((item) => {
     let dropdown_item = document.createElement("li");
@@ -170,7 +177,7 @@ console.log(IngredientsArray)
 console.log(AppareilsList)
 console.log(UstensilesList)
 
-newFilterDropdown(
+newcreatefilterDropDown(
     //
     ingredientsSelect,
     
@@ -178,13 +185,13 @@ newFilterDropdown(
     
   );
 
-  newFilterDropdown(
+  newcreatefilterDropDown(
     
      appareilsSelect, 
     
       AppareilsList);
   
-  newFilterDropdown(
+  newcreatefilterDropDown(
     
     ustensileSelect,
     
