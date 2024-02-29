@@ -58,11 +58,7 @@ filterBy=[];
 
 
 /////////////EVENT LISTENER FOR SEARCHBAR ///////////////////////
-//  queryInput.addEventListener("input", (event) => {
-//   let query = event.target.value.toUpperCase();
-// findCards(query);
 
-// });
 
 queryInput.addEventListener("input",(event) => {
   event.preventDefault();
@@ -113,6 +109,10 @@ queryInput.addEventListener("keyup", (event) => {
       filterBy.pop(); // Remove the last search term
       console.log(filterBy[filterBy.length - 1])
       findCardsSearch(queryInput.value.toUpperCase());
+      if(queryInput.value==""){
+        resetCards()
+        resetSearchfilter()
+      }
   } 
 
 });
@@ -130,6 +130,7 @@ loupe.addEventListener("click", (event) => {
   if (query.length >= 3) {
     
     findCardsSearch(query);
+    
   }
   else if (query == "") {
     resetCards();
@@ -149,82 +150,53 @@ loupe.addEventListener("click", (event) => {
  ////////////SELECT SEARCH FUNCTION/////////////////
 
 
-
-//apply cklickfunction to visible elements in dropdown
-let visibleSelectItems = document.querySelectorAll(
-  ".dropdown-item[data-visible]"
-);
+applyClickToVisibleItems()
 
 
-//get clicked item
-let dropdownitems = document.querySelectorAll("dropdown-item");
+// //apply cklickfunction to visible elements in dropdown
+// let visibleSelectItems = document.querySelectorAll(
+//   ".dropdown-item[data-visible]"
+// );
+// // create tag for chosen term
+// visibleSelectItems.forEach((item) => {
+//   item.addEventListener("click", (event) => {
+//     let tag = event.currentTarget.textContent;
+//     // console.log(tag);
+//     createTag(item, tag);
 
-// create tag for chosen term
-visibleSelectItems.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    let tag = event.currentTarget.textContent;
-    // console.log(tag);
-    createTag(item, tag);
 
-
-    //remove tag on click
-    let searchtags = document.querySelectorAll(".searchtag");
-    searchtags.forEach((item) => {
-      item.addEventListener("click", (event) => {
-        let term = event.currentTarget.textContent;
-        console.log(term);
-        event.currentTarget.remove();
-        removeSelectFilter(tag)
-        const tagsection = document.querySelector(".tag_section");
-        tagsection.removeAttribute("data-active")
-      });
-    });
+//     //remove tag on click
+//     let searchtags = document.querySelectorAll(".searchtag");
+//     searchtags.forEach((item) => {
+//       item.addEventListener("click", (event) => {
+//         let term = event.currentTarget.textContent;
+//         console.log(term);
+//         event.currentTarget.remove();
+//         removeSelectFilter(tag)
+//         const tagsection = document.querySelector(".tag_section");
+//         tagsection.removeAttribute("data-active")
+//       });
+//     });
 
 
    
 
-    //////////RUN SEARCH FUNCTION////////////////////
-    findCardsSelect(tag);
-    updateRecipeCount();
+//     //////////RUN SEARCH FUNCTION////////////////////
+//     findCardsSelect(tag);
+//     updateRecipeCount();
     
-  });
-});
-/////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////make selectsearch accessible via keys/////////
-
-// document.addEventListener("keydown", (e) => {
-//   //down key
-//   if (e.key === 'ArrowDown') {
-//     console.log("downArrowKey was pressed")
-//   }
-
-//   //upkey
-//   else if (e.key === 'ArrowUp') {
-//     console.log("upArrowKey was pressed")
-//   }
-
-//   //Enter key
-//   else if (e.key === "Enter") {
-//     console.log("Enter key was pressed")
-//   }
+//   });
 // });
+// /////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 
 
