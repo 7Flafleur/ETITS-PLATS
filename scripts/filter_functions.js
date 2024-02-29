@@ -1,33 +1,5 @@
 //VARIABLES
 
-function toggledropdowndisplay() {
-  if (dropdown.style.display == "none") dropdown.style.display = "block";
-  else dropdown.style.display = "none";
-}
-
-
-function filterfunction () {
-  let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
-  let spchars=['<', '>', '/']
-   if(spchars.some(char => input.value.includes(char)))
-   {console.log("charactères erronés")
-  return false}
- 
-    if (!dropdown_items) return false;
-    for (let i = 0; i < dropdown_items.length; i++) {
-      if (
-        dropdown_items[i].innerHTML
-          .toUpperCase()
-          .includes(input.value.toUpperCase())
-      )
-        dropdown_items[i].style.display = "block";
-      else dropdown_items[i].style.display = "none";
-    }
-  
-  updateRecipeCount();
-}
-
-
 
 
 function createfilterDropDown(button, dropdown, input, items) {
@@ -254,7 +226,8 @@ applyClickToVisibleItems()
 
 function findCardsSelect(query){
     // console.log(query);
-    filterBy.push(query)
+    if(!filterBy.includes(query))
+    {filterBy.push(query)}
     console.log("Filter by ", filterBy)
     let visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
     visibleRecipesList.forEach((recipe) => {
@@ -269,6 +242,52 @@ function findCardsSelect(query){
 
     visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
     updateRecipeCount();
+
+      //nex recipelist for nexw selcts
+
+  let newRecipeList = [];
+
+  newRecipeList = recipes.filter(recipe => 
+      recipe.name.toUpperCase().includes(query) || 
+      recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
+      recipe.description.toUpperCase().includes(query)
+  );
+  
+  console.log("New recipe list",newRecipeList);
+
+let IngredientsArray=getIngredientsList(newRecipeList);
+let AppareilsList=getApparails(newRecipeList)
+let UstensilesList=getUstensilesList(newRecipeList)
+
+// console.log(IngredientsArray)
+// console.log(AppareilsList)
+// console.log(UstensilesList)
+
+createfilterDropDown(
+  ingredientsButton, //
+  ingredientsSelect,
+  ingredientsInput,
+  IngredientsArray
+);
+
+createfilterDropDown(
+  appareilsButton,
+   appareilsSelect, 
+   appareilsInput,
+    AppareilsList);
+
+createfilterDropDown(
+  ustensileButton,
+  ustensileSelect,
+  ustensileInput,
+  UstensilesList
+);
+
+applyClickToVisibleItems()
+
+
+
+
 
     if (visibleRecipesList.length == 0) {
         displayNoResults();
@@ -347,6 +366,7 @@ function applyClickToVisibleItems() {
     item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
       createTag(item, tag);
+     
 
       // Remove tag on click
       let searchtags = document.querySelectorAll(".searchtag");
@@ -358,12 +378,14 @@ function applyClickToVisibleItems() {
           removeSelectFilter(tag);
           const tagsection = document.querySelector(".tag_section");
           tagsection.removeAttribute("data-active");
+        
         });
       });
 
       // Run search function
       findCardsSelect(tag);
       updateRecipeCount();
+      
     });
   });
 }

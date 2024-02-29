@@ -152,6 +152,26 @@ loupe.addEventListener("click", (event) => {
 
 applyClickToVisibleItems()
 
+let ulElements = document.querySelectorAll('ul');
+
+ulElements.forEach((ul) => {
+  let style = window.getComputedStyle(ul);
+  if (style.display === 'none') {
+    // ul is hidden, change an element in its sibling node
+    let sibling = ul.nextElementSibling;
+    if (sibling) {
+      // Change the sibling element
+      sibling.textContent = 'Changed!';
+    }
+  }
+});
+
+
+
+
+
+
+
 
 // //apply cklickfunction to visible elements in dropdown
 // let visibleSelectItems = document.querySelectorAll(
