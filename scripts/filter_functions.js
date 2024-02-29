@@ -54,8 +54,8 @@ function createfilterDropDown(button, dropdown, input, items) {
   //   if (dropdown.style.display == "none") dropdown.style.display = "block";
   //   else dropdown.style.display = "none";
   // });
-const chevrondown=document.querySelector(".fa-chevron-down")
-const chevronup=document.querySelector(".fa-chevron-up")
+const chevrondown=button.querySelector(".fa-chevron-down")
+const chevronup=button.querySelector(".fa-chevron-up")
 
   //make the button toggle the display of dropdown
   chevrondown.addEventListener("click", function () {
