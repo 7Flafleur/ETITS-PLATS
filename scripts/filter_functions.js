@@ -66,6 +66,8 @@ function newcreatefilterDropDown( dropdown,recipelist){
   //hide the dropdown list
   dropdown.style.display = "none";
 
+
+
 }
 
 
@@ -97,6 +99,42 @@ function newcreatefilterDropDown( dropdown,recipelist){
   
 //   updateRecipeCount();
 // }
+
+
+function searchSelectItems() {
+  // Apply click function to visible elements in dropdown
+  let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
+
+  // Create tag for chosen term
+  visibleSelectItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      let tag = event.currentTarget.textContent;
+      createTag(item, tag);
+
+      //////////RUN SEARCH FUNCTION////////////////////
+      findCardsSelect(tag);
+      updateRecipeCount();
+    });
+  });
+}
+
+function removeTagOnClick() {
+  // Remove tag on click
+  let searchtags = document.querySelectorAll(".searchtag");
+  searchtags.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      let term = event.currentTarget.textContent;
+      console.log(term);
+      event.currentTarget.remove();
+      removeSelectFilter(term);
+      const tagsection = document.querySelector(".tag_section");
+      tagsection.removeAttribute("data-active");
+    });
+  });
+}
+
+// Call the functions
+
 
 
 
@@ -198,6 +236,9 @@ newcreatefilterDropDown(
     UstensilesList
     
   );
+
+  searchSelectItems();
+  removeTagOnClick();
 
 }
 
