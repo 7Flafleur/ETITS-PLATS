@@ -35,22 +35,20 @@ createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
   ingredientsInput,
-  IngredientsArray,
-  "ingr"
+  IngredientsArray
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
    appareilsInput,
-    AppareilsList,"App");
+    AppareilsList);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
   ustensileInput,
-  UstensilesList,
-  "ust"
+  UstensilesList
 );
 
 queryInput.value = "";

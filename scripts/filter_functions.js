@@ -1,21 +1,44 @@
 //VARIABLES
 
+function toggledropdowndisplay() {
+  if (dropdown.style.display == "none") dropdown.style.display = "block";
+  else dropdown.style.display = "none";
+}
 
 
-function createfilterDropDown(button, dropdown, input, items,cat) {
+function filterfunction () {
+  let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
+  let spchars=['<', '>', '/']
+   if(spchars.some(char => input.value.includes(char)))
+   {console.log("charactères erronés")
+  return false}
+ 
+    if (!dropdown_items) return false;
+    for (let i = 0; i < dropdown_items.length; i++) {
+      if (
+        dropdown_items[i].innerHTML
+          .toUpperCase()
+          .includes(input.value.toUpperCase())
+      )
+        dropdown_items[i].style.display = "block";
+      else dropdown_items[i].style.display = "none";
+    }
+  
+  updateRecipeCount();
+}
 
-    // Create input field
-    let dropdown_input = document.createElement("input");
-    dropdown_input.setAttribute("type", "text");
-    dropdown_input.setAttribute("class", "dropdown-input");
-    dropdown.appendChild(dropdown_input);
+
+
+
+function createfilterDropDown(button, dropdown, input, items) {
+
 
   //create dropdown items from list of items
   items.forEach((item) => {
     let dropdown_item = document.createElement("li");
     dropdown_item.setAttribute("data-visible", "true");
     dropdown_item.setAttribute("class", "dropdown-item");
-    dropdown_item.dataset.category=cat
+   
     dropdown_item.innerHTML = item;
     dropdown.appendChild(dropdown_item);
   });
@@ -30,7 +53,7 @@ function createfilterDropDown(button, dropdown, input, items,cat) {
 
   //filter function
 
-  dropdown_input.addEventListener("input", function () {
+  input.addEventListener("input", function () {
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
     let spchars=['<', '>', '/']
      if(spchars.some(char => input.value.includes(char)))
@@ -53,22 +76,26 @@ function createfilterDropDown(button, dropdown, input, items,cat) {
   
 }
 
-function newcreatefilterDropDown( dropdown,recipelist){
-  dropdown.innerHTML=""
-  recipelist.forEach((item) => {
-    let dropdown_item = document.createElement("li");
-    dropdown_item.setAttribute("data-visible", "true");
-    dropdown_item.setAttribute("class", "dropdown-item");
+
+
+// //AFTER RE/
+
+// function newcreatefilterDropDown( dropdown,recipelist){
+//   dropdown.innerHTML=""
+//   recipelist.forEach((item) => {
+//     let dropdown_item = document.createElement("li");
+//     dropdown_item.setAttribute("data-visible", "true");
+//     dropdown_item.setAttribute("class", "dropdown-item");
     
-    dropdown_item.innerHTML = item;
-    dropdown.appendChild(dropdown_item);
-  });
-  //hide the dropdown list
-  dropdown.style.display = "none";
+//     dropdown_item.innerHTML = item;
+//     dropdown.appendChild(dropdown_item);
+//   });
+//   //hide the dropdown list
+//   dropdown.style.display = "none";
 
 
 
-}
+// }
 
 
 //////////////////////////////////////////////////
@@ -215,30 +242,30 @@ console.log(IngredientsArray)
 console.log(AppareilsList)
 console.log(UstensilesList)
 
-newcreatefilterDropDown(
-    //
-    ingredientsSelect,
-    
-    IngredientsArray
-    
-  );
+createfilterDropDown(
+  ingredientsButton, //
+  ingredientsSelect,
+  ingredientsInput,
+  IngredientsArray
+);
 
-  newcreatefilterDropDown(
-    
-     appareilsSelect, 
-    
-      AppareilsList);
-  
-  newcreatefilterDropDown(
-    
-    ustensileSelect,
-    
-    UstensilesList
-    
-  );
+createfilterDropDown(
+  appareilsButton,
+   appareilsSelect, 
+   appareilsInput,
+    AppareilsList);
 
-  searchSelectItems();
-  removeTagOnClick();
+createfilterDropDown(
+  ustensileButton,
+  ustensileSelect,
+  ustensileInput,
+  UstensilesList
+);
+
+
+
+
+
 
 }
 
