@@ -45,11 +45,25 @@ function createfilterDropDown(button, dropdown, input, items) {
   //hide the dropdown list
   dropdown.style.display = "none";
 
+
+  //remove existing evetn listener
+
+  button.removeEventListener("click", function () {
+    if (dropdown.style.display == "none") dropdown.style.display = "block";
+    else dropdown.style.display = "none";
+  });
+
+
   //make the button toggle the display of dropdown
   button.addEventListener("click", function () {
     if (dropdown.style.display == "none") dropdown.style.display = "block";
     else dropdown.style.display = "none";
   });
+
+
+
+
+
 
   //filter function
 
