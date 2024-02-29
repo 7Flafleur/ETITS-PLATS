@@ -37,6 +37,29 @@ function getIngredientsList(recipelist){
 }
 
 
+function getIngredientsListDOM(visiblerecipes){
+    let ingredientslistarray=[]
+
+    visiblerecipes.forEach((recipe)=>{
+        let ingredientslist=recipe.querySelectorAll(".ingr")
+
+        ingredientslist.forEach((ing)=>{
+            ingredientslistarray.push(ing.textContent.toUpperCase())
+        })
+    })
+
+    const IngredientsList=new Set(ingredientslistarray)
+    
+    const IngredientsArray=Array.from(IngredientsList)
+    
+   
+    
+    IngredientsArray.sort()
+    
+    return IngredientsArray;   
+}
+
+
 ////////get appareils for search///////////////
 
 
@@ -57,6 +80,22 @@ function getApparails(recipelist){
     return AppareilsList
 }
 
+function getApparailsDOM(visiblerecipes){
+    const appareilslist=[]
+
+    visiblerecipes.forEach((recipe)=>{
+        let appareils=recipe.querySelector(".appl")
+        let appareil=appareils.textContent
+        appareilslist.push(appareil.toUpperCase())
+    })
+    
+    const AppareilsList = Array.from(new Set(appareilslist));
+    
+    AppareilsList.sort()
+
+    return AppareilsList
+
+}
 
 
 
@@ -94,3 +133,34 @@ return UstensilesList
 
 }
 
+function getUstensilesListDOM(visiblerecipes){
+    let ustensilelistarray=[]
+
+
+
+    visiblerecipes.forEach((recipe)=>{
+    
+        const ustensiles=recipe.querySelectorAll(".usts")
+        
+        ustensiles.forEach((ust)=>{
+            let usts=ust.textContent
+            if(typeof(usts)=="string")
+            {ustensilelistarray.push(usts.toUpperCase())}
+        })
+    
+    
+})
+
+
+let UstensilesList=new Set(ustensilelistarray)
+
+
+
+UstensilesList=Array.from(UstensilesList)
+
+UstensilesList.sort()
+
+return UstensilesList
+
+
+}

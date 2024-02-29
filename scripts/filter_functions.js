@@ -245,23 +245,18 @@ function findCardsSelect(query){
 
       //nex recipelist for nexw selcts
 
-  let newRecipeList = [];
+  let newRecipeList = Array.from(visibleRecipesList);
 
-  newRecipeList = recipes.filter(recipe => 
-      recipe.name.toUpperCase().includes(query) || 
-      recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
-      recipe.description.toUpperCase().includes(query)
-  );
-  
+
   console.log("New recipe list",newRecipeList);
 
-let IngredientsArray=getIngredientsList(newRecipeList);
-let AppareilsList=getApparails(newRecipeList)
-let UstensilesList=getUstensilesList(newRecipeList)
+let IngredientsArray=getIngredientsListDOM(newRecipeList);
+let AppareilsList=getApparailsDOM(newRecipeList)
+let UstensilesList=getUstensilesListDOM(newRecipeList)
 
-// console.log(IngredientsArray)
-// console.log(AppareilsList)
-// console.log(UstensilesList)
+console.log(IngredientsArray)
+console.log(AppareilsList)
+console.log(UstensilesList)
 
 createfilterDropDown(
   ingredientsButton, //

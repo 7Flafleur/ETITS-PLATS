@@ -52,7 +52,10 @@ function RecipeCardTemplate(data) {
         ingredients.forEach((ingredient)=>{
             const ingr=document.createElement("li")
             ingr.setAttribute("class", "ingredient")
-            ingr.textContent=ingredient.ingredient
+            const ingsp=document.createElement("span")
+            ingsp.textContent=ingredient.ingredient
+            ingr.append(ingsp)
+            ingsp.setAttribute("class", "ingr")
             const br=document.createElement("br")
             const quant=document.createElement("span")
             quant.setAttribute("class", "quantité")
@@ -77,9 +80,14 @@ function RecipeCardTemplate(data) {
 
         //appliance,invisible
 
-        const appl=document.createElement("div")
-        appl.setAttribute("class", "hidden")
-        appl.textContent="Appareils: "+appliance
+        const appls=document.createElement("div")
+        appls.setAttribute("class", "hidden")
+        const appl=document.createElement("span")
+        appl.setAttribute("class", "appl")
+        const l=document.createElement("span")
+        appl.textContent=appliance
+        
+
 
         //ustensils, invisible
 
