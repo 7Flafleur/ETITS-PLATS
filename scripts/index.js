@@ -83,6 +83,7 @@ queryInput.addEventListener("input",(event) => {
   else if (query == "") {
     resetCards();
     resetSearchfilter();
+    updateFilterDropdown()
    
   }
   updateRecipeCount();

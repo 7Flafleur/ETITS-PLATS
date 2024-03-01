@@ -41,7 +41,7 @@ function createfilterDropDown(button, dropdown, items,chevrondown,chevronup) {
   //make the button toggle the display of dropdown
   chevrondown.addEventListener("click", function () {
     dropdown.style.display = "block";
-    console.log("listitem",dropdown.children.length)
+    // console.log("listitem",dropdown.children.length)
     chevronup.style.display="inline"
     chevronup.dataset.active="true"
     chevrondown.style.display="none"
@@ -89,7 +89,7 @@ chevronup.addEventListener("click", function(){
   });
   
 
-console.log(dropdown,"created - length:",dropdown.children.length)
+// console.log(dropdown,"created - length:",dropdown.children.length)
 }
 
 
@@ -192,6 +192,7 @@ function findCardsSearch(query) {
     displayNoResults();
   }
 
+
   //nex recipelist for nexw selcts
 
   let newRecipeList = [];
@@ -202,7 +203,7 @@ function findCardsSearch(query) {
       recipe.description.toUpperCase().includes(query)
   );
   
-  console.log("New recipe list",newRecipeList);
+  // console.log("New recipe list",newRecipeList);
 
 let IngredientsArray=getIngredientsList(newRecipeList);
 let AppareilsList=getApparails(newRecipeList)
@@ -252,7 +253,7 @@ function findCardsSelect(query){
         let cardContent = recipe.textContent.toUpperCase();
         if (!cardContent.includes(query)) {
             recipe.dataset.visible = "false";
-            // console.log("not included");
+            
         } else {
             recipe.dataset.visible = "true";
         }
@@ -272,9 +273,9 @@ let IngredientsArray=getIngredientsListDOM(newRecipeList);
 let AppareilsList=getApparailsDOM(newRecipeList)
 let UstensilesList=getUstensilesListDOM(newRecipeList)
 
-console.log(IngredientsArray)
-console.log(AppareilsList)
-console.log(UstensilesList)
+// console.log(IngredientsArray)
+// console.log(AppareilsList)
+// console.log(UstensilesList)
 
 createfilterDropDown(
   ingredientsButton, //
@@ -373,16 +374,25 @@ resultmsg.textContent="";
 
 
 function applyClickToVisibleItems() {
+
   // Apply click function to visible elements in dropdown
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
 
-let activechevron=document.querySelector(".fa-solid[data-active='true']")
-let inactivechevron=document.querySelector("fa-solid[data-active='false']")
+
+
   // Create tag for chosen term
   visibleSelectItems.forEach((item) => {
     item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
+      let target=event.currentTarget
+      let button=target.parentNode.previousElementSibling
+      let chevup=button.querySelector(".fa-chevron-up")
+      let chevdown=button.querySelector(".fa-chevron-down")
+      console.log("Target",target)
+      console.log("Parent",target.parentNode.previousElementSibling)
       createTag(item, tag);
+      chevdown.style.display="inline"
+      chevup.style.display="none"
   
      
 
@@ -403,7 +413,10 @@ let inactivechevron=document.querySelector("fa-solid[data-active='false']")
       // Run search function
       findCardsSelect(tag);
       updateRecipeCount();
-   
+
+      //toggle chevron
+
+
     });
   });
 }
