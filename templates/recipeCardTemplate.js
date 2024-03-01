@@ -59,7 +59,7 @@ function RecipeCardTemplate(data) {
             const br=document.createElement("br")
             const quant=document.createElement("span")
             quant.setAttribute("class", "quantité")
-            ingr.append(br)
+            
             let qu;
             if(!ingredient.quantity)
             { qu=" - "}
@@ -84,6 +84,7 @@ function RecipeCardTemplate(data) {
         appls.setAttribute("class", "hidden")
         const appl=document.createElement("span")
         appl.setAttribute("class", "appl")
+        appl.setAttribute("class", "hidden")
         const l=document.createElement("span")
         appl.textContent=appliance
         

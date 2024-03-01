@@ -8,12 +8,23 @@ function createfilterDropDown(button, dropdown, items,chevrondown,chevronup) {
   dropdown.innerHTML=""
 
     // Create search field
+    // const searchFieldDiv=document.createElement("div")
     const searchField = document.createElement("input");
     searchField.setAttribute("type", "text");
     searchField.setAttribute("class", "search-input")
     searchField.setAttribute("autocomplete", "off")
-    searchField.setAttribute("placeholder", button.textContent);
+    searchField.setAttribute("placeholder", button.textContent );
+    const btn=document.createElement("button")
+    btn.setAttribute("class", "select-search")
+    btn.setAttribute("type", "submit")
+  const icon=document.createElement("img")
+  icon.setAttribute("class", "loupe")
+  icon.setAttribute("src", "loupe.png")
+  btn.append(icon)
+    // searchFieldDiv.append(searchField)
+    // searchFieldDiv.append(btn)
     dropdown.appendChild(searchField);
+    dropdown.appendChild(btn)
   
 
   //create dropdown items from list of items

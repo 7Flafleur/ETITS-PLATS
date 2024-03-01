@@ -67,18 +67,14 @@ main {
   display: flex;
   justify-content: space-between;
   gap: 80px;
-  input {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
 
   .button {
-    width: 100%;
+    // border: #000 solid 1px;
     height: 22px;
     background-color: #fff;
     border-radius: 14px;
     display: inline-flex;
+    margin-left:25px;
 padding: 17px 16px;
 align-items: center;
 gap: 63px;
@@ -89,6 +85,8 @@ font-size: 16px;
 font-style: normal;
 
 line-height: normal;
+
+
 
   }
 }
@@ -113,16 +111,44 @@ margin:0;
 //*DROPDOWN test*///////////////
 
 .searchsort {
-  // border: #7A7A7A solid 1px;
-  width:188px;
+  //  border: #7A7A7A solid 1px;
+  width:250px;
+ 
+ 
  
 }
 
+.innersearchsort{
+  background-color: #fff;
+   border-radius: 14px;
+}
+
+
 .search-input {
+ margin-left:25px;
+width:180px;
+  height:28px;
+  position: sticky;
+  top:0;
+  
+  
+}
+
+.select-search  {
+  background: transparent;
+border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+position: relative;
+right:25px;
  
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-left: 20px; /* Adjust this value based on the size of your icon */
+  
+}
+
+.loupe{
+  height:13px;
+  width: 13px;
 }
 
 .dropdown-item {
@@ -132,12 +158,24 @@ margin:0;
 #dropdown1,
 #dropdown2,
 #dropdown3 {
+ 
   height: 280px;
-  overflow: clip;
+  overflow-y: scroll;  
+  scrollbar-width: none;  
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
   width: 100%;
   font-size: 16px;
   padding: 5px;
+  
 }
+
+
+#dropdown1,
+#dropdown2,
+#dropdown3 {
+  display: none;  /* For Chrome, Safari and Opera */
+}
+
 
 .dropdown-item {
   display: block;
@@ -159,6 +197,7 @@ margin:0;
   justify-content: space-evenly;
 
   gap: 55px;
+  
 }
 
 

@@ -63,17 +63,12 @@ main {
   justify-content: space-between;
   gap: 80px;
 }
-.sort input {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 16px;
-}
 .sort .button {
-  width: 100%;
   height: 22px;
   background-color: #fff;
   border-radius: 14px;
   display: inline-flex;
+  margin-left: 25px;
   padding: 17px 16px;
   align-items: center;
   gap: 63px;
@@ -102,13 +97,35 @@ main {
 }
 
 .searchsort {
-  width: 188px;
+  width: 250px;
+}
+
+.innersearchsort {
+  background-color: #fff;
+  border-radius: 14px;
 }
 
 .search-input {
-  background-repeat: no-repeat;
-  background-position: left;
-  padding-left: 20px; /* Adjust this value based on the size of your icon */
+  margin-left: 25px;
+  width: 180px;
+  height: 28px;
+  position: sticky;
+  top: 0;
+}
+
+.select-search {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  position: relative;
+  right: 25px;
+}
+
+.loupe {
+  height: 13px;
+  width: 13px;
 }
 
 .dropdown-item {
@@ -119,10 +136,18 @@ main {
 #dropdown2,
 #dropdown3 {
   height: 280px;
-  overflow: clip;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
   width: 100%;
   font-size: 16px;
   padding: 5px;
+}
+
+#dropdown1,
+#dropdown2,
+#dropdown3 {
+  display: none; /* For Chrome, Safari and Opera */
 }
 
 .dropdown-item {
