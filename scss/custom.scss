@@ -130,6 +130,7 @@ width:180px;
   height:28px;
   position: sticky;
   top:0;
+
   
   
 }
@@ -137,11 +138,12 @@ width:180px;
 .select-search  {
   background: transparent;
 border: none;
+
   cursor: pointer;
   display: inline-block;
   font-size: 18px;
-position: relative;
-right:25px;
+position: sticky;
+right:45px;
  
   
 }
@@ -149,6 +151,8 @@ right:25px;
 .loupe{
   height:13px;
   width: 13px;
+  
+  
 }
 
 .dropdown-item {
@@ -159,13 +163,15 @@ right:25px;
 #dropdown2,
 #dropdown3 {
  
-  height: 280px;
-  overflow-y: scroll;  
+  height: 275px;
+  overflow-y: hidden;  
   scrollbar-width: none;  
   -ms-overflow-style: none;  /* For Internet Explorer and Edge */
   width: 100%;
   font-size: 16px;
   padding: 5px;
+  
+  margin-top:0;
   
 }
 
