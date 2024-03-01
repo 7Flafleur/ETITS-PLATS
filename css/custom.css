@@ -160,7 +160,7 @@ main {
 }
 
 .dropdown-item:hover {
-  background-color: rgba(0, 204, 255, 0.459);
+  background-color: #ffd15b;
 }
 
 .dropdown_container {
