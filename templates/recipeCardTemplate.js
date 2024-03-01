@@ -80,13 +80,15 @@ function RecipeCardTemplate(data) {
 
         //appliance,invisible
 
-        const appls=document.createElement("div")
+        const appls=document.createElement("template")
         appls.setAttribute("class", "hidden")
         const appl=document.createElement("span")
-        appl.setAttribute("class", "appl")
-        appl.setAttribute("class", "hidden")
-        const l=document.createElement("span")
+        appl.classList.add("hidden","appl")
+        
+       
+       
         appl.textContent=appliance
+        appls.append(appl)
         
 
 
