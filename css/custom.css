@@ -97,8 +97,18 @@ main {
   display: none;
 }
 
+.chevron-up [data-active=false], .chevron-down[data-active=false] {
+  display: none;
+}
+
 .searchsort {
   width: 188px;
+}
+
+.search-input {
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px; /* Adjust this value based on the size of your icon */
 }
 
 .dropdown-item {

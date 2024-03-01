@@ -2,7 +2,7 @@
 
 
 
-function createfilterDropDown(button, dropdown, items) {
+function createfilterDropDown(button, dropdown, items,chevrondown,chevronup) {
 
   //empty list before creating it
   dropdown.innerHTML=""
@@ -10,7 +10,9 @@ function createfilterDropDown(button, dropdown, items) {
     // Create search field
     const searchField = document.createElement("input");
     searchField.setAttribute("type", "text");
-    searchField.setAttribute("placeholder", "Search...");
+    searchField.setAttribute("class", "search-input")
+    searchField.setAttribute("autocomplete", "off")
+    searchField.setAttribute("placeholder", button.textContent);
     dropdown.appendChild(searchField);
   
 
@@ -26,6 +28,8 @@ function createfilterDropDown(button, dropdown, items) {
   //hide the dropdown list
   dropdown.style.display = "none";
 
+  chevrondown.dataset.active="true";
+  chevronup.dataset.active="false";
 
   //remove existing evetn listener
 
@@ -33,22 +37,24 @@ function createfilterDropDown(button, dropdown, items) {
   //   if (dropdown.style.display == "none") dropdown.style.display = "block";
   //   else dropdown.style.display = "none";
   // });
-const chevrondown=button.querySelector(".fa-chevron-down")
-const chevronup=button.querySelector(".fa-chevron-up")
 
   //make the button toggle the display of dropdown
   chevrondown.addEventListener("click", function () {
     dropdown.style.display = "block";
     console.log("listitem",dropdown.children.length)
     chevronup.style.display="inline"
+    chevronup.dataset.active="true"
     chevrondown.style.display="none"
+    chevrondown.dataset.active="false"
   });
 
 
 chevronup.addEventListener("click", function(){
   dropdown.style.display = "none"
   chevrondown.style.display="inline"
+  chevrondown.dataset.active="true"
   chevronup.style.display="none"
+  chevronup.dataset.active="false"
 })
 
 
@@ -59,6 +65,7 @@ chevronup.addEventListener("click", function(){
   // filter function
 
   searchField.addEventListener("input", function () {
+
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
     let spchars=['<', '>', '/']
      if(spchars.some(char => searchField.value.includes(char)))
@@ -74,13 +81,15 @@ chevronup.addEventListener("click", function(){
         )
           dropdown_items[i].style.display = "block";
         else dropdown_items[i].style.display = "none";
+        
+
       }
     
     updateRecipeCount();
   });
   
 
-
+console.log(dropdown,"created - length:",dropdown.children.length)
 }
 
 
@@ -114,6 +123,7 @@ function removeTagOnClick() {
       const tagsection = document.querySelector(".tag_section");
       tagsection.removeAttribute("data-active");
     });
+    updateFilterDropdown()
   });
 }
 
@@ -206,20 +216,21 @@ createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
   
-  IngredientsArray
+  IngredientsArray,
+  chdown1,chup1
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
    
-    AppareilsList);
+    AppareilsList,chdown2,chup2);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
   
-  UstensilesList
+  UstensilesList,chdown3,chup3
 );
 
 applyClickToVisibleItems()
@@ -268,21 +279,21 @@ console.log(UstensilesList)
 createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
-  
-  IngredientsArray
+  IngredientsArray,
+  chdown1,chup1,
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
-   
-    AppareilsList);
+    AppareilsList,chdown2,chup2
+    );
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
  
-  UstensilesList
+  UstensilesList,chdown3,chup3
 );
 
 applyClickToVisibleItems()
@@ -355,6 +366,8 @@ function removeSelectFilter(tag){
 resultmsg.textContent="";
         })
  updateRecipeCount()
+ 
+
 }
 
 
@@ -363,11 +376,14 @@ function applyClickToVisibleItems() {
   // Apply click function to visible elements in dropdown
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
 
+let activechevron=document.querySelector(".fa-solid[data-active='true']")
+let inactivechevron=document.querySelector("fa-solid[data-active='false']")
   // Create tag for chosen term
   visibleSelectItems.forEach((item) => {
     item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
       createTag(item, tag);
+  
      
 
       // Remove tag on click
@@ -380,14 +396,69 @@ function applyClickToVisibleItems() {
           removeSelectFilter(tag);
           const tagsection = document.querySelector(".tag_section");
           tagsection.removeAttribute("data-active");
-        
+          updateFilterDropdown()
         });
       });
 
       // Run search function
       findCardsSelect(tag);
       updateRecipeCount();
-      
+   
     });
   });
+}
+
+
+function updateFilterDropdown(){
+
+  let visibleRecipesList = document.querySelectorAll(
+    ".card[data-visible='true']"
+  );
+
+      //nex recipelist for nexw selcts
+
+      let newRecipeList = Array.from(visibleRecipesList);
+
+
+      console.log("New recipe list",newRecipeList);
+    
+    let IngredientsArray=getIngredientsListDOM(newRecipeList);
+    let AppareilsList=getApparailsDOM(newRecipeList)
+    let UstensilesList=getUstensilesListDOM(newRecipeList)
+    
+    console.log(IngredientsArray)
+    console.log(AppareilsList)
+    console.log(UstensilesList)
+    
+    createfilterDropDown(
+      ingredientsButton, //
+      ingredientsSelect,
+      IngredientsArray,
+      chdown1,chup1,
+    );
+    
+    createfilterDropDown(
+      appareilsButton,
+       appareilsSelect, 
+        AppareilsList,chdown2,chup2
+        );
+    
+    createfilterDropDown(
+      ustensileButton,
+      ustensileSelect,
+     
+      UstensilesList,chdown3,chup3
+    );
+    
+    applyClickToVisibleItems()
+    
+    
+    
+    
+    
+        if (visibleRecipesList.length == 0) {
+            displayNoResults();
+        }
+
+
 }

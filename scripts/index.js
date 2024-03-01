@@ -10,15 +10,19 @@ const queryInput = document.getElementById("queryInput");
 ///SELECT DROPDOWN////////////
 const ingredientsButton = document.getElementById("toggle1");
 const ingredientsSelect = document.getElementById("dropdown1");
-const ingredientsInput = document.getElementById("inputIn");
+const chdown1 = document.getElementById("chdown1")
+const chup1 =document.getElementById("chup1")
 
 const appareilsButton = document.getElementById("toggle2");
 const appareilsSelect = document.getElementById("dropdown2");
-const appareilsInput = document.getElementById("inputA");
+const chdown2 = document.getElementById("chdown2")
+const chup2 =document.getElementById("chup2")
+
 
 const ustensileButton = document.getElementById("toggle3");
 const ustensileSelect = document.getElementById("dropdown3");
-const ustensileInput = document.getElementById("inputU");
+const chdown3 = document.getElementById("chdown3")
+const chup3 =document.getElementById("chup3")
 
 
 
@@ -27,6 +31,7 @@ let filterBy=[];
 //////////////MAIN CODE///////////////////////
 displayCards(recipes);
 updateRecipeCount();
+
 let IngredientsArray=getIngredientsList(recipes)
 let AppareilsList=getApparails(recipes)
 let UstensilesList=getUstensilesList(recipes)
@@ -34,21 +39,25 @@ let UstensilesList=getUstensilesList(recipes)
 createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
-  
-  IngredientsArray
+  IngredientsArray,
+  chdown1,
+  chup1
+
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
-   
-    AppareilsList);
+    AppareilsList,
+    chdown2,
+    chup2);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
- 
-  UstensilesList
+  UstensilesList,
+  chdown3,
+  chup3
 );
 
 queryInput.value = "";
@@ -154,17 +163,7 @@ applyClickToVisibleItems()
 
 let ulElements = document.querySelectorAll('ul');
 
-ulElements.forEach((ul) => {
-  let style = window.getComputedStyle(ul);
-  if (style.display === 'none') {
-    // ul is hidden, change an element in its sibling node
-    let sibling = ul.nextElementSibling;
-    if (sibling) {
-      // Change the sibling element
-      sibling.textContent = 'Changed!';
-    }
-  }
-});
+
 
 
 
