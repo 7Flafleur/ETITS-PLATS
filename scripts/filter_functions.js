@@ -2,10 +2,17 @@
 
 
 
-function createfilterDropDown(button, dropdown, input, items) {
+function createfilterDropDown(button, dropdown, items) {
 
   //empty list before creating it
   dropdown.innerHTML=""
+
+    // Create search field
+    const searchField = document.createElement("input");
+    searchField.setAttribute("type", "text");
+    searchField.setAttribute("placeholder", "Search...");
+    dropdown.appendChild(searchField);
+  
 
   //create dropdown items from list of items
   items.forEach((item) => {
@@ -49,12 +56,12 @@ chevronup.addEventListener("click", function(){
 
 
 
-  //filter function
+  // filter function
 
-  input.addEventListener("input", function () {
+  searchField.addEventListener("input", function () {
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
     let spchars=['<', '>', '/']
-     if(spchars.some(char => input.value.includes(char)))
+     if(spchars.some(char => searchField.value.includes(char)))
      {console.log("charactères erronés")
     return false}
    
@@ -63,7 +70,7 @@ chevronup.addEventListener("click", function(){
         if (
           dropdown_items[i].innerHTML
             .toUpperCase()
-            .includes(input.value.toUpperCase())
+            .includes(searchField.value.toUpperCase())
         )
           dropdown_items[i].style.display = "block";
         else dropdown_items[i].style.display = "none";
@@ -198,20 +205,20 @@ let UstensilesList=getUstensilesList(newRecipeList)
 createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
-  ingredientsInput,
+  
   IngredientsArray
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
-   appareilsInput,
+   
     AppareilsList);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
-  ustensileInput,
+  
   UstensilesList
 );
 
@@ -261,20 +268,20 @@ console.log(UstensilesList)
 createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
-  ingredientsInput,
+  
   IngredientsArray
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
-   appareilsInput,
+   
     AppareilsList);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
-  ustensileInput,
+ 
   UstensilesList
 );
 

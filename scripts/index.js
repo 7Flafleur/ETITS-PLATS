@@ -34,20 +34,20 @@ let UstensilesList=getUstensilesList(recipes)
 createfilterDropDown(
   ingredientsButton, //
   ingredientsSelect,
-  ingredientsInput,
+  
   IngredientsArray
 );
 
 createfilterDropDown(
   appareilsButton,
    appareilsSelect, 
-   appareilsInput,
+   
     AppareilsList);
 
 createfilterDropDown(
   ustensileButton,
   ustensileSelect,
-  ustensileInput,
+ 
   UstensilesList
 );
 
