@@ -50,15 +50,15 @@ function RecipeCardTemplate(data) {
 
 // ...
 
-for (let i = 0; i < ingredients.length; i++) {
-    const ingredient = ingredients[i];
+ingredients.forEach((ing)=>{
+    const ingredient = ing;
     const ingr = document.createElement("li");
     ingr.setAttribute("class", "ingredient");
     const ingsp = document.createElement("span");
     ingsp.textContent = ingredient.ingredient;
     ingr.append(ingsp);
     ingsp.setAttribute("class", "ingr");
-    const br = document.createElement("br");
+    
     const quant = document.createElement("span");
     quant.setAttribute("class", "quantité");
     
@@ -79,7 +79,10 @@ for (let i = 0; i < ingredients.length; i++) {
 
     ingr.append(quant);
     ingredientsDiv.append(ingr);
-}
+})
+
+
+
 
 // ...
         //appliance,invisible
@@ -156,10 +159,10 @@ hidden.dataset.hidden="true"
 function displayCards(cardarray) {
     const cardcontainer = document.querySelector(".card_container");
 
-    for (let i = 0; i < cardarray.length; i++) {
-        const cardModel = RecipeCardTemplate(cardarray[i]);
-        const recipeCard = cardModel.getRecipeCardDOM(cardarray[i]);
+    cardarray.forEach((card)=>{
+        const cardModel = RecipeCardTemplate(card);
+        const recipeCard = cardModel.getRecipeCardDOM(card);
         
         cardcontainer.appendChild(recipeCard);
-    }
+    })
 }
