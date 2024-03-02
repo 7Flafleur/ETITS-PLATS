@@ -177,7 +177,7 @@ cards.forEach((card)=>{
     const cardclone=card.cloneNode(true)
     cardclone.dataset.lightbox="true"
     cardclone.dataset.hover="false"
-    const hidden=cardclone.querySelectorAll("[data-hidden='true']")
+    const hidden=cardclone.querySelectorAll("[data-hidden='true]")
     console.log(hidden)
     hidden.forEach((element)=>
     element.dataset.hidden="false")

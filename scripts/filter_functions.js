@@ -28,14 +28,13 @@ function createfilterDropDown(button, dropdown, items,chevrondown,chevronup) {
   
 
   //create dropdown items from list of items
-  items.forEach((item) => {
+  for (let i = 0; i < items.length; i++) {
     let dropdown_item = document.createElement("li");
     dropdown_item.setAttribute("data-visible", "true");
     dropdown_item.setAttribute("class", "dropdown-item");
-   
-    dropdown_item.innerHTML = item;
+    dropdown_item.innerHTML = items[i];
     dropdown.appendChild(dropdown_item);
-  });
+  }
   //hide the dropdown list
   dropdown.style.display = "none";
 
@@ -75,6 +74,7 @@ chevronup.addEventListener("click", function(){
 
   // filter function
 
+
   searchField.addEventListener("input", function () {
 
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
@@ -84,22 +84,22 @@ chevronup.addEventListener("click", function(){
     return false}
    
       if (!dropdown_items) return false;
-      for (let i = 0; i < dropdown_items.length; i++) {
+
+     dropdown_items.forEach((dropdown_item) =>{
         if (
-          dropdown_items[i].innerHTML
+          dropdown_item.innerHTML
             .toUpperCase()
             .includes(searchField.value.toUpperCase())
         )
-          dropdown_items[i].style.display = "block";
-        else dropdown_items[i].style.display = "none";
+          dropdown_item.style.display = "block";
+        else dropdown_item.style.display = "none";
         
 
-      }
+      })
     
     updateRecipeCount();
   });
   
-
 // console.log(dropdown,"created - length:",dropdown.children.length)
 }
 

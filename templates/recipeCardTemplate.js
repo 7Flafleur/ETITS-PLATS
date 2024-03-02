@@ -48,36 +48,40 @@ function RecipeCardTemplate(data) {
         const ingredientsDiv = document.createElement("ul");
         ingredientsDiv.setAttribute("class", "card_content-ingredients");
 
+// ...
 
-        ingredients.forEach((ingredient)=>{
-            const ingr=document.createElement("li")
-            ingr.setAttribute("class", "ingredient")
-            const ingsp=document.createElement("span")
-            ingsp.textContent=ingredient.ingredient
-            ingr.append(ingsp)
-            ingsp.setAttribute("class", "ingr")
-            const br=document.createElement("br")
-            const quant=document.createElement("span")
-            quant.setAttribute("class", "quantité")
-            
-            let qu;
-            if(!ingredient.quantity)
-            { qu=" - "}
-            else{qu=ingredient.quantity}
-            
-            let u;
-            if(!ingredient.unit){
-                u=""
-            }
-            else{u=ingredient.unit}
-        quant.textContent=qu+" "+u
-         
+for (let i = 0; i < ingredients.length; i++) {
+    const ingredient = ingredients[i];
+    const ingr = document.createElement("li");
+    ingr.setAttribute("class", "ingredient");
+    const ingsp = document.createElement("span");
+    ingsp.textContent = ingredient.ingredient;
+    ingr.append(ingsp);
+    ingsp.setAttribute("class", "ingr");
+    const br = document.createElement("br");
+    const quant = document.createElement("span");
+    quant.setAttribute("class", "quantité");
+    
+    let qu;
+    if (!ingredient.quantity) {
+        qu = " - ";
+    } else {
+        qu = ingredient.quantity;
+    }
+    
+    let u;
+    if (!ingredient.unit) {
+        u = "";
+    } else {
+        u = ingredient.unit;
+    }
+    quant.textContent = qu + " " + u;
 
-            ingr.append(quant)
-            ingredientsDiv.append(ingr);
+    ingr.append(quant);
+    ingredientsDiv.append(ingr);
+}
 
-        })
-
+// ...
         //appliance,invisible
 const h3a=document.createElement("h4")
 h3a.setAttribute("class", "ingredient")
@@ -149,14 +153,13 @@ hidden.dataset.hidden="true"
     return { id, image, name, ingredients, time, description, appliance, ustensils, getRecipeCardDOM };
 } // end RecipeCardTemplate
 
-function displayCards(cardarray){
-    const cardcontainer=document.querySelector(".card_container");
+function displayCards(cardarray) {
+    const cardcontainer = document.querySelector(".card_container");
 
-    cardarray.forEach(element => {
-        const cardModel=RecipeCardTemplate(element);
-        const recipeCard=cardModel.getRecipeCardDOM(element);
+    for (let i = 0; i < cardarray.length; i++) {
+        const cardModel = RecipeCardTemplate(cardarray[i]);
+        const recipeCard = cardModel.getRecipeCardDOM(cardarray[i]);
         
-        cardcontainer.appendChild(recipeCard)
-        
-    });
+        cardcontainer.appendChild(recipeCard);
+    }
 }
