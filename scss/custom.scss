@@ -348,14 +348,27 @@ line-height: normal;
   position: relative;
 }
 
+
 .card[data-visible=false] {
   display:none; // Your styles here
  }
 
  .card[data-visible=true]{
   display:flex;
-  
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
  }
+
+
+.card:hover{
+  cursor: pointer;
+  transform: perspective(2000px) translate3d(0px, 0px, 50px);
+  outline: none;
+}
+
+.card[data-hover=false]:hover{
+  transform: none;
+}
  
 
 
@@ -460,6 +473,7 @@ text-transform: uppercase;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  max-width: 50%;
 }
 
 .quantité {
@@ -474,6 +488,76 @@ text-transform: uppercase;
 .hidden{
   display:none
 }
+
+.card[data-lightbox=true]{
+
+
+  
+  overflow: scroll;
+  scrollbar-width: none;
+ 
+  position: relative;
+
+  .card_content-recette, .card_content-ingredients{
+    overflow: scroll;
+    scrollbar-width: none;
+  }
+
+
+}
+
+.lightbox {
+
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 198, 91, 0.4);
+}
+
+.lightbox[data-active='true'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#closeLB{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:5px;
+  position: absolute;
+  top: 20px;  /* Adjust this value to change the position of the button */
+  right: 70px;  /* Adjust this value to change the position of the button */
+  background: transparent;
+  font-family: $header-font;
+  font-size: large;
+  letter-spacing: 2px;
+  color: rgb(255, 165, 91);
+ 
+}
+
+#toque{
+  fill: #ffd15b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (min-width: 413px) and (max-width: 810px) {

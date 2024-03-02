@@ -79,15 +79,17 @@ function RecipeCardTemplate(data) {
         })
 
         //appliance,invisible
-
+const h3a=document.createElement("h3")
+h3a.textContent="Appareils"
         const appls=document.createElement("template")
         appls.setAttribute("class", "hidden")
         const appl=document.createElement("span")
         appl.classList.add("hidden","appl")
-        
+        appl.append(h3a)
        
        
         appl.textContent=appliance
+        appls.append(h3a)
         appls.append(appl)
         
 

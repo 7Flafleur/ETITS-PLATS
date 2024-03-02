@@ -166,60 +166,41 @@ let ulElements = document.querySelectorAll('ul');
 
 
 
+const lightbox=document.querySelector(".lightbox")
+const cards=document.querySelectorAll(".card")
+// const templates=document.querySelectorAll("template")
 
-
-
-
-
-
-
-// //apply cklickfunction to visible elements in dropdown
-// let visibleSelectItems = document.querySelectorAll(
-//   ".dropdown-item[data-visible]"
-// );
-// // create tag for chosen term
-// visibleSelectItems.forEach((item) => {
-//   item.addEventListener("click", (event) => {
-//     let tag = event.currentTarget.textContent;
-//     // console.log(tag);
-//     createTag(item, tag);
-
-
-//     //remove tag on click
-//     let searchtags = document.querySelectorAll(".searchtag");
-//     searchtags.forEach((item) => {
-//       item.addEventListener("click", (event) => {
-//         let term = event.currentTarget.textContent;
-//         console.log(term);
-//         event.currentTarget.remove();
-//         removeSelectFilter(tag)
-//         const tagsection = document.querySelector(".tag_section");
-//         tagsection.removeAttribute("data-active")
-//       });
-//     });
-
-
-   
-
-//     //////////RUN SEARCH FUNCTION////////////////////
-//     findCardsSelect(tag);
-//     updateRecipeCount();
+cards.forEach((card)=>{
+  card.addEventListener("click", (e)=>{
+    console.log(e.currentTarget)
+    const card=e.currentTarget
+    const cardclone=card.cloneNode(true)
+    cardclone.dataset.lightbox="true"
+    cardclone.dataset.hover="false"
+    const hidden=cardclone.querySelectorAll(".hidden")
+    console.log(hidden)
+    hidden.forEach((element)=>
+    element.classList.remove("hidden"))
     
-//   });
-// });
-// /////////////////////////////////
+    
+    lightbox.dataset.active="true"
+    lightbox.append(cardclone)
 
+  })
+})
 
+const closeLB=document.querySelector("#closeLB")
 
-
-
-
-
-
-
-
-
-
+closeLB.addEventListener("click", ()=>
+{
+  lightbox.dataset.active="false";
+  const activecard=lightbox.querySelector(".card")
+ 
+  activecard.dataset.lightbox="false"
+  
+ activecard.remove()
+  
+})
 
 
 
