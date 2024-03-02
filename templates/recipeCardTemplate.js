@@ -79,20 +79,29 @@ function RecipeCardTemplate(data) {
         })
 
         //appliance,invisible
-const h3a=document.createElement("h3")
-h3a.textContent="Appareils"
+const h3a=document.createElement("h4")
+h3a.setAttribute("class", "ingredient")
+h3a.textContent="Appareils: "
+
         const appls=document.createElement("div")
         appls.setAttribute("class", "appls")
-        const appl=document.createElement("span")
-        appl.classList.add("appl")
+        const appl=document.createElement("div")
+        appl.setAttribute("class","appl")
         appls.dataset.hidden="true"
-        appl.append(h3a)
+
+        appls.append(h3a)
        
        
         appl.textContent=appliance
-        appls.append(h3a)
+        
+        
         appls.append(appl)
         
+//hidden container
+
+const hidden=document.createElement("div")
+hidden.classList.add("card_content-ingredients", "hidden")
+hidden.dataset.hidden="true"
 
 
         //ustensils, invisible
@@ -100,21 +109,34 @@ h3a.textContent="Appareils"
         const ustensilsTemplate=document.createElement("div")
         ustensilsTemplate.setAttribute("data-hidden","true")
         ustensilsTemplate.setAttribute("id","ustl")
-        const ustensilsListtemplate=document.createElement("ul")
-        ustensils.forEach((ustensil)=>{
-            const ust=document.createElement("li")
+        const h3u=document.createElement("h4")
+        h3u.setAttribute("class", "ingredient")
+        h3u.textContent="Ustensiles:"
+        const ustensilsListtemplate=document.createElement("div")
+        ustensils.forEach((ustensil,index)=>{
+            const ust=document.createElement("span")
             ust.setAttribute("class", "usts")
-            ust.textContent=ustensil
+            if(index<ustensils.length-1)
+           { ust.textContent=" "+ustensil.toLowerCase()+","}
+           else{
+            ust.textContent=" "+ustensil.toLowerCase()
+           }
+
             ustensilsListtemplate.append(ust)
         })
+        ustensilsTemplate.append(h3u)
         ustensilsTemplate.append(ustensilsListtemplate)
+
+        hidden.append(ustensilsTemplate)
+        hidden.append(appls)
+
         
 
         
         cardcontent.append(h3);
         cardcontent.append(ingredientsDiv);
-        cardcontent.append(appls)
-        cardcontent.append(ustensilsTemplate)
+
+    cardcontent.append(hidden)
 
         recipecard.append(cardcontent);
 
