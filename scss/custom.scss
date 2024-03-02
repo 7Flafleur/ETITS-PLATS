@@ -485,7 +485,7 @@ text-transform: uppercase;
   line-height: normal;
 }
 
-.hidden{
+#ustl[data-hidden=true],.appls[data-hidden=true]{
   display:none
 }
 
@@ -503,6 +503,9 @@ text-transform: uppercase;
     scrollbar-width: none;
   }
 
+  .usts{
+    list-style: none;
+  }
 
 }
 

@@ -81,10 +81,11 @@ function RecipeCardTemplate(data) {
         //appliance,invisible
 const h3a=document.createElement("h3")
 h3a.textContent="Appareils"
-        const appls=document.createElement("template")
-        appls.setAttribute("class", "hidden")
+        const appls=document.createElement("div")
+        appls.setAttribute("class", "appls")
         const appl=document.createElement("span")
-        appl.classList.add("hidden","appl")
+        appl.classList.add("appl")
+        appls.dataset.hidden="true"
         appl.append(h3a)
        
        
@@ -96,8 +97,9 @@ h3a.textContent="Appareils"
 
         //ustensils, invisible
 
-        const ustensilsTemplate=document.createElement("template")
-        ustensilsTemplate.setAttribute("class","hidden")
+        const ustensilsTemplate=document.createElement("div")
+        ustensilsTemplate.setAttribute("data-hidden","true")
+        ustensilsTemplate.setAttribute("id","ustl")
         const ustensilsListtemplate=document.createElement("ul")
         ustensils.forEach((ustensil)=>{
             const ust=document.createElement("li")
@@ -111,7 +113,7 @@ h3a.textContent="Appareils"
         
         cardcontent.append(h3);
         cardcontent.append(ingredientsDiv);
-        cardcontent.append(appl)
+        cardcontent.append(appls)
         cardcontent.append(ustensilsTemplate)
 
         recipecard.append(cardcontent);

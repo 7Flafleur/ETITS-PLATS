@@ -429,7 +429,7 @@ main {
   line-height: normal;
 }
 
-.hidden {
+#ustl[data-hidden=true], .appls[data-hidden=true] {
   display: none;
 }
 
@@ -441,6 +441,9 @@ main {
 .card[data-lightbox=true] .card_content-recette, .card[data-lightbox=true] .card_content-ingredients {
   overflow: scroll;
   scrollbar-width: none;
+}
+.card[data-lightbox=true] .usts {
+  list-style: none;
 }
 
 .lightbox {
