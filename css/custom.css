@@ -365,6 +365,7 @@ main {
   flex-direction: column;
   gap: 32px;
   max-height: 32%;
+  word-wrap: break-word;
   overflow: clip;
   justify-content: flex-start;
   margin-top: 0;
