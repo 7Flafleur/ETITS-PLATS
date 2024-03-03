@@ -1,166 +1,110 @@
-
 function getIngredientsList(recipelist){
-
-    let ingredientslistarray=[]
-
-    recipelist.forEach((recipe)=>{
-        let ingredientslist=Object.values(recipe.ingredients)
-        ingredientslistarray.push(ingredientslist)
-    })
-    
-
-    
-    let ingredientsarray=[]
-    
-    ingredientslistarray.forEach((inglist)=>{
-        inglist.forEach((ingredientinfo)=>{
-            let ingredient=ingredientinfo.ingredient
-            ingredientsarray.push(ingredient)
-    
-        })
-    })
-    
+    let ingredientslistarray = [];
+    for(let i = 0; i < recipelist.length; i++) {
+        let ingredientslist = Object.values(recipelist[i].ingredients);
+        ingredientslistarray.push(ingredientslist);
+    }
+    let ingredientsarray = [];
+    for(let i = 0; i < ingredientslistarray.length; i++) {
+        for(let j = 0; j < ingredientslistarray[i].length; j++) {
+            let ingredient = ingredientslistarray[i][j].ingredient;
+            ingredientsarray.push(ingredient);
+        }
+    }
 
     
-    
-    ingredientsarray=ingredientsarray.map(ingredient=>ingredient.toUpperCase())
-    
-    const IngredientsList=new Set(ingredientsarray)
-    
-    const IngredientsArray=Array.from(IngredientsList)
-    
-   
-    
-    IngredientsArray.sort()
-    
+
+for(let i =0;i<ingredientsarray.length;i++){
+    ingredientsarray[i]=ingredientsarray[i].toUpperCase()
+}
+
+
+
+
+
+
+    const IngredientsList = new Set(ingredientsarray);
+    const IngredientsArray = Array.from(IngredientsList);
+    IngredientsArray.sort();
     return IngredientsArray;
 }
 
-
 function getIngredientsListDOM(visiblerecipes){
-    let ingredientslistarray=[]
-
-    visiblerecipes.forEach((recipe)=>{
-        let ingredientslist=recipe.querySelectorAll(".ingr")
-
-        ingredientslist.forEach((ing)=>{
-            ingredientslistarray.push(ing.textContent.toUpperCase())
-        })
-    })
-
-    const IngredientsList=new Set(ingredientslistarray)
-    
-    const IngredientsArray=Array.from(IngredientsList)
-    
-   
-    
-    IngredientsArray.sort()
-    
+    let ingredientslistarray = [];
+    for(let i = 0; i < visiblerecipes.length; i++) {
+        let ingredientslist = visiblerecipes[i].querySelectorAll(".ingr");
+        for(let j = 0; j < ingredientslist.length; j++) {
+            ingredientslistarray.push(ingredientslist[j].textContent.toUpperCase());
+        }
+    }
+    const IngredientsList = new Set(ingredientslistarray);
+    const IngredientsArray = Array.from(IngredientsList);
+    IngredientsArray.sort();
     return IngredientsArray;   
 }
 
-
-////////get appareils for search///////////////
-
-
-
 function getApparails(recipelist){
-
-    const appareilslist=[]
-
-    recipelist.forEach((recipe)=>{
-        appareil=recipe.appliance
-        appareilslist.push(appareil.toUpperCase())
-    })
-    
+    const appareilslist = [];
+    for(let i = 0; i < recipelist.length; i++) {
+        let appareil = recipelist[i].appliance;
+        appareilslist.push(appareil.toUpperCase());
+    }
     const AppareilsList = Array.from(new Set(appareilslist));
-    
-    AppareilsList.sort()
-
-    return AppareilsList
+    AppareilsList.sort();
+    return AppareilsList;
 }
 
 function getApparailsDOM(visiblerecipes){
-    const appareilslist=[]
-
-    visiblerecipes.forEach((recipe)=>{
-        let appareils=recipe.querySelector(".appl")
-        let appareil=appareils.textContent
-        appareilslist.push(appareil.toUpperCase())
-    })
-    
+    const appareilslist = [];
+    for(let i = 0; i < visiblerecipes.length; i++) {
+        let appareils = visiblerecipes[i].querySelector(".appl");
+        let appareil = appareils.textContent;
+        appareilslist.push(appareil.toUpperCase());
+    }
     const AppareilsList = Array.from(new Set(appareilslist));
-    
-    AppareilsList.sort()
-
-    return AppareilsList
-
+    AppareilsList.sort();
+    return AppareilsList;
 }
 
-
-
 function getUstensilesList(recipelist){
-    let ustensilelistarray=[]
+    let ustensilelistarray = [];
+    for(let i = 0; i < recipelist.length; i++) {
+        let ustensiles = recipelist[i].ustensils;
+        ustensilelistarray.push(ustensiles);
+    }
+    let ustensilelist = [];
+    for(let i = 0; i < ustensilelistarray.length; i++) {
+        for(let j = 0; j < ustensilelistarray[i].length; j++) {
+            ustensilelist.push(ustensilelistarray[i][j]);
+        }
+    }
+   
+
+    for(let i = 0; i < ustensilelist.length; i++){
+        ustensilelist[i] = ustensilelist[i].toUpperCase();
+    }  
 
 
 
-recipelist.forEach((recipe)=>{
-    let ustensiles=recipe.ustensils
-    
-    ustensilelistarray.push(ustensiles)
-})
-
-let ustensilelist=[];
-
-ustensilelistarray.forEach((ustenlist)=>{
-    ustenlist.forEach((ustensile)=>{
-        
-        ustensilelist.push(ustensile)
-
-    })
-})
-ustensilelist=ustensilelist.map(ustensile=>ustensile.toUpperCase())
-
-let UstensilesList=new Set(ustensilelist)
-
-
-
-UstensilesList=Array.from(UstensilesList)
-
-UstensilesList.sort()
-
-return UstensilesList
-
+    let UstensilesList = new Set(ustensilelist);
+    UstensilesList = Array.from(UstensilesList);
+    UstensilesList.sort();
+    return UstensilesList;
 }
 
 function getUstensilesListDOM(visiblerecipes){
-    let ustensilelistarray=[]
-
-
-
-    visiblerecipes.forEach((recipe)=>{
-    
-        const ustensiles=recipe.querySelectorAll(".usts")
-        
-        ustensiles.forEach((ust)=>{
-            let usts=ust.textContent
-            if(typeof(usts)=="string")
-            {ustensilelistarray.push(usts.toUpperCase())}
-        })
-    
-    
-})
-
-
-let UstensilesList=new Set(ustensilelistarray)
-
-
-
-UstensilesList=Array.from(UstensilesList)
-
-UstensilesList.sort()
-
-return UstensilesList
-
-
+    let ustensilelistarray = [];
+    for(let i = 0; i < visiblerecipes.length; i++) {
+        const ustensiles = visiblerecipes[i].querySelectorAll(".usts");
+        for(let j = 0; j < ustensiles.length; j++) {
+            let usts = ustensiles[j].textContent;
+            if(typeof(usts) == "string") {
+                ustensilelistarray.push(usts.toUpperCase());
+            }
+        }
+    }
+    let UstensilesList = new Set(ustensilelistarray);
+    UstensilesList = Array.from(UstensilesList);
+    UstensilesList.sort();
+    return UstensilesList;
 }

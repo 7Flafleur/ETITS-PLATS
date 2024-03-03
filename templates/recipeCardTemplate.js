@@ -48,36 +48,40 @@ function RecipeCardTemplate(data) {
         const ingredientsDiv = document.createElement("ul");
         ingredientsDiv.setAttribute("class", "card_content-ingredients");
 
+// ...
 
-        ingredients.forEach((ingredient)=>{
-            const ingr=document.createElement("li")
-            ingr.setAttribute("class", "ingredient")
-            const ingsp=document.createElement("span")
-            ingsp.textContent=ingredient.ingredient
-            ingr.append(ingsp)
-            ingsp.setAttribute("class", "ingr")
-            const br=document.createElement("br")
-            const quant=document.createElement("span")
-            quant.setAttribute("class", "quantité")
-            
-            let qu;
-            if(!ingredient.quantity)
-            { qu=" - "}
-            else{qu=ingredient.quantity}
-            
-            let u;
-            if(!ingredient.unit){
-                u=""
-            }
-            else{u=ingredient.unit}
-        quant.textContent=qu+" "+u
-         
+for (let i = 0; i < ingredients.length; i++) {
+    const ingredient = ingredients[i];
+    const ingr = document.createElement("li");
+    ingr.setAttribute("class", "ingredient");
+    const ingsp = document.createElement("span");
+    ingsp.textContent = ingredient.ingredient;
+    ingr.append(ingsp);
+    ingsp.setAttribute("class", "ingr");
+    const br = document.createElement("br");
+    const quant = document.createElement("span");
+    quant.setAttribute("class", "quantité");
+    
+    let qu;
+    if (!ingredient.quantity) {
+        qu = " - ";
+    } else {
+        qu = ingredient.quantity;
+    }
+    
+    let u;
+    if (!ingredient.unit) {
+        u = "";
+    } else {
+        u = ingredient.unit;
+    }
+    quant.textContent = qu + " " + u;
 
-            ingr.append(quant)
-            ingredientsDiv.append(ingr);
+    ingr.append(quant);
+    ingredientsDiv.append(ingr);
+}
 
-        })
-
+// ...
         //appliance,invisible
 const h3a=document.createElement("h4")
 h3a.setAttribute("class", "ingredient")
@@ -113,17 +117,19 @@ hidden.dataset.hidden="true"
         h3u.setAttribute("class", "ingredient")
         h3u.textContent="Ustensiles:"
         const ustensilsListtemplate=document.createElement("div")
-        ustensils.forEach((ustensil,index)=>{
-            const ust=document.createElement("span")
-            ust.setAttribute("class", "usts")
-            if(index<ustensils.length-1)
-           { ust.textContent=" "+ustensil.toLowerCase()+","}
-           else{
-            ust.textContent=" "+ustensil.toLowerCase()
-           }
 
-            ustensilsListtemplate.append(ust)
-        })
+        /////////////////////////////////////////////////////
+        for(let index = 0; index < ustensils.length; index++) {
+            const ust = document.createElement("span");
+            ust.setAttribute("class", "usts");
+            // if(index < ustensils.length - 1) {
+            //   ust.textContent = " " + ustensils[index].toLowerCase() + ",";
+            // } else {
+              ust.textContent = " " + ustensils[index].toLowerCase()+" ";
+            // }
+            ustensilsListtemplate.append(ust);
+          }
+        ///////////////////////////////////////
         ustensilsTemplate.append(h3u)
         ustensilsTemplate.append(ustensilsListtemplate)
 
@@ -149,14 +155,15 @@ hidden.dataset.hidden="true"
     return { id, image, name, ingredients, time, description, appliance, ustensils, getRecipeCardDOM };
 } // end RecipeCardTemplate
 
-function displayCards(cardarray){
-    const cardcontainer=document.querySelector(".card_container");
 
-    cardarray.forEach(element => {
-        const cardModel=RecipeCardTemplate(element);
-        const recipeCard=cardModel.getRecipeCardDOM(element);
+
+function displayCards(cardarray) {
+    const cardcontainer = document.querySelector(".card_container");
+
+    for (let i = 0; i < cardarray.length; i++) {
+        const cardModel = RecipeCardTemplate(cardarray[i]);
+        const recipeCard = cardModel.getRecipeCardDOM(cardarray[i]);
         
-        cardcontainer.appendChild(recipeCard)
-        
-    });
+        cardcontainer.appendChild(recipeCard);
+    }
 }
