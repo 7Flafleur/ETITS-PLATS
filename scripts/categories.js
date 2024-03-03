@@ -11,7 +11,18 @@ function getIngredientsList(recipelist){
             ingredientsarray.push(ingredient);
         }
     }
-    ingredientsarray = ingredientsarray.map(ingredient => ingredient.toUpperCase());
+
+    
+
+for(let i =0;i<ingredientsarray.length;i++){
+    ingredientsarray[i]=ingredientsarray[i].toUpperCase()
+}
+
+
+
+
+
+
     const IngredientsList = new Set(ingredientsarray);
     const IngredientsArray = Array.from(IngredientsList);
     IngredientsArray.sort();
@@ -67,7 +78,14 @@ function getUstensilesList(recipelist){
             ustensilelist.push(ustensilelistarray[i][j]);
         }
     }
-    ustensilelist = ustensilelist.map(ustensile => ustensile.toUpperCase());
+   
+
+    for(let i = 0; i < ustensilelist.length; i++){
+        ustensilelist[i] = ustensilelist[i].toUpperCase();
+    }  
+
+
+
     let UstensilesList = new Set(ustensilelist);
     UstensilesList = Array.from(UstensilesList);
     UstensilesList.sort();

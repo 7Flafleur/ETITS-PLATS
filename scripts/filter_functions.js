@@ -224,12 +224,65 @@ for(let i=0;i<allRecipesList.length;i++){
 
   let newRecipeList = [];
 
-  newRecipeList = recipes.filter(recipe => 
-      recipe.name.toUpperCase().includes(query) || 
-      recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
-      recipe.description.toUpperCase().includes(query)
-  );
+  // newRecipeList = recipes.filter(recipe =>  
+  //     recipe.name.toUpperCase().includes(query) || 
+  //     recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
+  //     recipe.description.toUpperCase().includes(query)
+  // );
   
+  // for(let i =0;i<recipes.length;i++){
+  //   /*           */
+
+  // {
+  // newRecipeList.push(recipes[i])}
+  // }
+
+  //////////////////////////////////////////////
+
+
+
+function someincludes(array,term){
+  for(let i=0;i<array.length;i++){
+    if(includesItems(array[i],term.toUpperCase())){
+      return true;
+    }
+  }
+return false;
+}
+
+//includes
+function includesItems(subarray,item){
+  for(let i=0;i<subarray.length;i++){
+    if (subarray[i].toUpperCase()==item.toUpperCase()){
+      return true;
+    }
+  }
+  return false;
+}
+
+
+
+for(let r=0;r<recipes.length;r++){
+  if(includesItems(recipes[r].name, query)
+  ||
+someincludes(recipes[r].ingredients, query)
+||
+includesItems(recipes[r].description,query))
+
+{
+  newRecipeList.push(recipes[r])
+}
+
+
+
+}
+
+
+
+
+
+////////////////////////////////////
+
   // console.log("New recipe list",newRecipeList);
 
 let IngredientsArray=getIngredientsList(newRecipeList);
