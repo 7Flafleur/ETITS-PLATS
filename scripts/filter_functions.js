@@ -28,13 +28,14 @@ function createfilterDropDown(button, dropdown, items,chevrondown,chevronup) {
   
 
   //create dropdown items from list of items
-  for (let i = 0; i < items.length; i++) {
+  items.forEach((item) => {
     let dropdown_item = document.createElement("li");
     dropdown_item.setAttribute("data-visible", "true");
     dropdown_item.setAttribute("class", "dropdown-item");
-    dropdown_item.innerHTML = items[i];
+   
+    dropdown_item.innerHTML = item;
     dropdown.appendChild(dropdown_item);
-  }
+  });
   //hide the dropdown list
   dropdown.style.display = "none";
 
@@ -74,7 +75,6 @@ chevronup.addEventListener("click", function(){
 
   // filter function
 
-
   searchField.addEventListener("input", function () {
 
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
@@ -84,25 +84,24 @@ chevronup.addEventListener("click", function(){
     return false}
    
       if (!dropdown_items) return false;
-/////////////////////////////////////////////////////////////
-for (let i=0;i<dropdown_items.length;i++){
-  if (
-    dropdown_items[i].innerHTML
-      .toUpperCase()
-      .includes(searchField.value.toUpperCase())
-  )
-    dropdown_items[i].style.display = "block";
-  else dropdown_items[i].style.display = "none";
-  
+      for (let i = 0; i < dropdown_items.length; i++) {
+        if (
+          dropdown_items[i].innerHTML
+            .toUpperCase()
+            .includes(searchField.value.toUpperCase())
+        )
+          dropdown_items[i].style.display = "block";
+        else dropdown_items[i].style.display = "none";
+        
 
-
-}
-
+      }
+    
     updateRecipeCount();
   });
   
+
 // console.log(dropdown,"created - length:",dropdown.children.length)
-}//end Filterdropdown
+}
 
 
 
@@ -111,29 +110,23 @@ function searchSelectItems() {
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
 
   // Create tag for chosen term
-
-  ////////////////////////////////////
-  for(let i=0;i<visibleSelectItems.length;i++) {
-    visibleSelectItems[i].addEventListener("click", (event) => {
+  visibleSelectItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
-      createTag(visibleSelectItems[i], tag);
+      createTag(item, tag);
 
       //////////RUN SEARCH FUNCTION////////////////////
       findCardsSelect(tag);
       updateRecipeCount();
     });
-  }
-  /////////////////////////////////////
-}//end searchselectitems
+  });
+}
 
 function removeTagOnClick() {
   // Remove tag on click
   let searchtags = document.querySelectorAll(".searchtag");
-///////////////////////////////////////
-
-
-  for(let i=0; i<searchtags.length;i++){
-    searchtags[i].addEventListener("click", (event) => {
+  searchtags.forEach((item) => {
+    item.addEventListener("click", (event) => {
       let term = event.currentTarget.textContent;
       console.log(term);
       event.currentTarget.remove();
@@ -142,10 +135,8 @@ function removeTagOnClick() {
       tagsection.removeAttribute("data-active");
     });
     updateFilterDropdown()
-  }
-////////////////////////////////////////////////////////
-
-} //end removeTAg
+  });
+}
 
 // Call the functions
 
@@ -166,7 +157,7 @@ function createTag(item, tag) {
  { tagsection.append(searchtag);
   tagsection.dataset.active='true'}
 
-}//end createTag
+}
 
 
 
@@ -184,37 +175,30 @@ function findCardsSearch(query) {
   // console.log("Filter by ",filterBy)
   let allRecipesList = document.querySelectorAll(".card");
 
-//////////////////////////////////////////////////////////////
-
-
-for(let i=0;i<allRecipesList.length;i++){
-  let titre = allRecipesList[i].querySelector("h2").textContent.toUpperCase();
-  let recette = allRecipesList[i]
-    .querySelector(".card_content-recette")
-    .textContent.toUpperCase();
-  let ingredients = allRecipesList[i]
-    .querySelector(".card_content-ingredients")
-    .textContent.toUpperCase();
-  if (
-    !titre.includes(query) &&
-    !recette.includes(query) &&
-    !ingredients.includes(query)
-  ) {
-    allRecipesList[i].dataset.visible = "false";
-    // console.log("not included");
-  } else {
-    allRecipesList[i].dataset.visible = "true";
-    resultmsg.textContent="";
-  }
-   visibleRecipesList = document.querySelectorAll(
-    ".card[data-visible='true' ]"
-  );
-  updateRecipeCount();
-}
-
-////////////////////////////////////////////
-
-
+  allRecipesList.forEach((recipe) => {
+    let titre = recipe.querySelector("h2").textContent.toUpperCase();
+    let recette = recipe
+      .querySelector(".card_content-recette")
+      .textContent.toUpperCase();
+    let ingredients = recipe
+      .querySelector(".card_content-ingredients")
+      .textContent.toUpperCase();
+    if (
+      !titre.includes(query) &&
+      !recette.includes(query) &&
+      !ingredients.includes(query)
+    ) {
+      recipe.dataset.visible = "false";
+      // console.log("not included");
+    } else {
+      recipe.dataset.visible = "true";
+      resultmsg.textContent="";
+    }
+     visibleRecipesList = document.querySelectorAll(
+      ".card[data-visible='true' ]"
+    );
+    updateRecipeCount();
+  });
   if (visibleRecipesList.length == 0) {
     displayNoResults();
   }
@@ -224,65 +208,12 @@ for(let i=0;i<allRecipesList.length;i++){
 
   let newRecipeList = [];
 
-  // newRecipeList = recipes.filter(recipe =>  
-  //     recipe.name.toUpperCase().includes(query) || 
-  //     recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
-  //     recipe.description.toUpperCase().includes(query)
-  // );
+  newRecipeList = recipes.filter(recipe => 
+      recipe.name.toUpperCase().includes(query) || 
+      recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
+      recipe.description.toUpperCase().includes(query)
+  );
   
-  // for(let i =0;i<recipes.length;i++){
-  //   /*           */
-
-  // {
-  // newRecipeList.push(recipes[i])}
-  // }
-
-  //////////////////////////////////////////////
-
-
-
-function someincludes(array,term){
-  for(let i=0;i<array.length;i++){
-    if(includesItems(array[i],term.toUpperCase())){
-      return true;
-    }
-  }
-return false;
-}
-
-//includes
-function includesItems(subarray,item){
-  for(let i=0;i<subarray.length;i++){
-    if (subarray[i].toUpperCase()==item.toUpperCase()){
-      return true;
-    }
-  }
-  return false;
-}
-
-
-
-for(let r=0;r<recipes.length;r++){
-  if(includesItems(recipes[r].name, query)
-  ||
-someincludes(recipes[r].ingredients, query)
-||
-includesItems(recipes[r].description,query))
-
-{
-  newRecipeList.push(recipes[r])
-}
-
-
-
-}
-
-
-
-
-
-////////////////////////////////////
-
   // console.log("New recipe list",newRecipeList);
 
 let IngredientsArray=getIngredientsList(newRecipeList);
@@ -319,7 +250,7 @@ applyClickToVisibleItems()
 
 
 
-}//end Findcardssearch
+}
 
 
 
@@ -329,19 +260,15 @@ function findCardsSelect(query){
     {filterBy.push(query)}
     console.log("Filter by ", filterBy)
     let visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
-
-
-    for(let i=0;i<visibleRecipesList.length;i++){
-      let cardContent = visibleRecipesList[i].textContent.toUpperCase();
-      if (!cardContent.includes(query)) {
-          visibleRecipesList[i].dataset.visible = "false";
-          
-      } else {
-          visibleRecipesList[i].dataset.visible = "true";
-      }
-    }
-
-    ///////////////////////////////////////////////////////
+    visibleRecipesList.forEach((recipe) => {
+        let cardContent = recipe.textContent.toUpperCase();
+        if (!cardContent.includes(query)) {
+            recipe.dataset.visible = "false";
+            
+        } else {
+            recipe.dataset.visible = "true";
+        }
+    });
 
     visibleRecipesList = document.querySelectorAll(".card[data-visible='true' ]");
     updateRecipeCount();
@@ -390,13 +317,13 @@ applyClickToVisibleItems()
     if (visibleRecipesList.length == 0) {
         displayNoResults();
     }
-}//end findcardsselect
+}
 
 function displayNoResults() {
   const resultmsg = document.getElementById("resultmsg");
   resultmsg.dataset.active="true"
   resultmsg.textContent = "Aucune recette trouvée";
-}//end displayno
+}
 
 function updateRecipeCount() {
   let visibleRecipesList = document.querySelectorAll(
@@ -408,29 +335,24 @@ function updateRecipeCount() {
   }
   else{nb_recettes.textContent = nb + " recettes"; }
   
-}//end updaterecipe
+}
 
 // Call this function every time `visibleRecipesList` is updated
 
 function resetCards() {
   //cards.removeAttribute
   const cards = document.querySelectorAll(".card");
-/////////////////////////////////////
-for(let i=0;i<cards.length;i++) {
-  cards[i].setAttribute("data-visible", "true");
-}
-
-  
-
-  /////////////////////////////////////////
+  cards.forEach((card) => {
+    card.setAttribute("data-visible", "true");
+  });
   queryInput.value = "";
   resultmsg.textContent = "";
   updateRecipeCount();
-}//end resetcads
+}
 
 function resetSearchfilter(){
   filterBy=[];
-}//end resetSearchfilter
+}
 
 //call filterDropDown function
 
@@ -444,150 +366,71 @@ function removeSelectFilter(tag){
       }
       console.log("Filters after ",filterBy)
      
-/////////////////////////////////////////////////////////////////////
-        
 
-        for(let i=0;i<invisibleRecipesList.length;i++){
-          let textContent = invisibleRecipesList[i].textContent.toUpperCase();
+        invisibleRecipesList.forEach((invisiblerecipe)=>{
+          let textContent = invisiblerecipe.textContent.toUpperCase();
 
           let containsAllTags = filterBy.every(tag => textContent.includes(tag.toUpperCase()));
       
           if (containsAllTags) {
-              invisibleRecipesList[i].dataset.visible="true";
+              invisiblerecipe.dataset.visible="true";
           } 
 resultmsg.textContent="";
-        }
-        ///////////////////////////////////////////
-
-
-
+        })
  updateRecipeCount()
  
 
 }
 
+
+
 function applyClickToVisibleItems() {
+
+  // Apply click function to visible elements in dropdown
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
 
-  for(let i=0; i<visibleSelectItems.length; i++) {
-    visibleSelectItems[i].addEventListener("click", (event) => {
+
+
+  // Create tag for chosen term
+  visibleSelectItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
-      let target = event.currentTarget;
-      let button = target.parentNode.previousElementSibling;
-      let chevup = button.querySelector(".fa-chevron-up");
-      let chevdown = button.querySelector(".fa-chevron-down");
-      console.log("Target", target);
-      console.log("Parent", target.parentNode.previousElementSibling);
-      createTag(visibleSelectItems[i], tag); // Changed item to visibleSelectItems[i]
-      chevdown.style.display = "inline";
-      chevup.style.display = "none";
+      let target=event.currentTarget
+      let button=target.parentNode.previousElementSibling
+      let chevup=button.querySelector(".fa-chevron-up")
+      let chevdown=button.querySelector(".fa-chevron-down")
+      console.log("Target",target)
+      console.log("Parent",target.parentNode.previousElementSibling)
+      createTag(item, tag);
+      chevdown.style.display="inline"
+      chevup.style.display="none"
+  
+     
 
+      // Remove tag on click
       let searchtags = document.querySelectorAll(".searchtag");
-
-      for(let j=0; j<searchtags.length; j++){
-        searchtags[j].addEventListener("click", (event) => {
+      searchtags.forEach((item) => {
+        item.addEventListener("click", (event) => {
           let term = event.currentTarget.textContent;
           console.log(term);
           event.currentTarget.remove();
           removeSelectFilter(tag);
           const tagsection = document.querySelector(".tag_section");
           tagsection.removeAttribute("data-active");
-          updateFilterDropdown();
+          updateFilterDropdown()
         });
-      }
+      });
 
+      // Run search function
       findCardsSelect(tag);
       updateRecipeCount();
+
+      //toggle chevron
+
+
     });
-  }
+  });
 }
-
-
-
-
-
-
-
-// function applyClickToVisibleItems() {
-
-//   // Apply click function to visible elements in dropdown
-//   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
-
-
-
-//   // Create tag for chosen term
-
-//   ///////////////////////////////////////////
-//   visibleSelectItems.forEach((item) => {
-//     item.addEventListener("click", (event) => {
-//       let tag = event.currentTarget.textContent;
-//       let target=event.currentTarget
-//       let button=target.parentNode.previousElementSibling
-//       let chevup=button.querySelector(".fa-chevron-up")
-//       let chevdown=button.querySelector(".fa-chevron-down")
-//       console.log("Target",target)
-//       console.log("Parent",target.parentNode.previousElementSibling)
-//       createTag(item, tag);
-//       chevdown.style.display="inline"
-//       chevup.style.display="none"
-  
-     
-
-//       // Remove tag on click
-//       let searchtags = document.querySelectorAll(".searchtag");
-
-//       ////////////////////////////////////////
-//       searchtags.forEach((item) => {
-//         item.addEventListener("click", (event) => {
-//           let term = event.currentTarget.textContent;
-//           console.log(term);
-//           event.currentTarget.remove();
-//           removeSelectFilter(tag);
-//           const tagsection = document.querySelector(".tag_section");
-//           tagsection.removeAttribute("data-active");
-//           updateFilterDropdown()
-//         }
-        
-//         );
-
-//       }); //end applyclicktovisible
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//       /////////////////////////////////////////////
-
-//       // Run search function
-//       findCardsSelect(tag);
-//       updateRecipeCount();
-
-//       //toggle chevron
-
-
-//     });
-//   });
-// }
 
 
 function updateFilterDropdown(){

@@ -517,7 +517,7 @@ main {
   fill: #ffd15b;
 }
 
-@media (min-width: 413px) and (max-width: 809px) {
+@media (min-width: 413px) and (max-width: 810px) {
   h1 {
     width: 90%;
   }
@@ -568,40 +568,25 @@ main {
   .card {
     width: 100%;
   }
-  .card[data-lightbox=true] {
-    width: 70%;
-    height: 90%;
-  }
-  #closeLB {
-    position: fixed;
-    right: 13px;
-    font-size: smaller;
-    letter-spacing: normal;
-  }
 }
 @media (min-width: 810px) and (max-width: 1081px) {
-  header {
-    height: 550px;
-  }
   .sort {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 70px 10px 10px 10px;
+    padding: 10px;
   }
   .dropdown_container {
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
   }
   .tag_section {
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 23px;
+    flex-direction: column;
+    align-items: center;
   }
   .searchtag {
-    width: 20%;
-    justify-content: center;
+    width: 50%;
   }
   .card_container {
     padding: 5px;
@@ -609,16 +594,6 @@ main {
   }
   .card {
     width: 45%;
-  }
-  .card[data-lightbox=true] {
-    width: 68%;
-    height: 90%;
-  }
-  #closeLB {
-    position: fixed;
-    right: 80px;
-    font-size: smaller;
-    letter-spacing: normal;
   }
 }
 
