@@ -147,9 +147,9 @@ loupe.addEventListener("click", (event) => {
     resetSearchfilter();
     let searchtags=document.querySelectorAll(".searchtag")
 
-    searchtags.forEach((searchtag)=>{
-      searchtag.remove()
-    })
+    for(let i=0;i<searchtags.length;i++){
+      searchtags[i].remove()
+    }
 
    
   }
@@ -170,8 +170,13 @@ const lightbox=document.querySelector(".lightbox")
 const cards=document.querySelectorAll(".card")
 // const templates=document.querySelectorAll("template")
 
-cards.forEach((card)=>{
-  card.addEventListener("click", (e)=>{
+
+
+
+
+
+for(i=0;i<cards.length;i++){
+  cards[i].addEventListener("click", (e)=>{
     console.log(e.currentTarget)
     const card=e.currentTarget
     const cardclone=card.cloneNode(true)
@@ -179,15 +184,20 @@ cards.forEach((card)=>{
     cardclone.dataset.hover="false"
     const hidden=cardclone.querySelectorAll("[data-hidden='true]")
     console.log(hidden)
-    hidden.forEach((element)=>
-    element.dataset.hidden="false")
+ for(i=0;i<hidden.length;i++){
+  hidden[i].dataset.hidden="false"
+ }
     
     
     lightbox.dataset.active="true"
     lightbox.append(cardclone)
 
   })
-})
+}
+
+
+
+
 
 const closeLB=document.querySelector("#closeLB")
 

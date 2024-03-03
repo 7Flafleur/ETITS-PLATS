@@ -117,17 +117,19 @@ hidden.dataset.hidden="true"
         h3u.setAttribute("class", "ingredient")
         h3u.textContent="Ustensiles:"
         const ustensilsListtemplate=document.createElement("div")
-        ustensils.forEach((ustensil,index)=>{
-            const ust=document.createElement("span")
-            ust.setAttribute("class", "usts")
-            if(index<ustensils.length-1)
-           { ust.textContent=" "+ustensil.toLowerCase()+","}
-           else{
-            ust.textContent=" "+ustensil.toLowerCase()
-           }
 
-            ustensilsListtemplate.append(ust)
-        })
+        /////////////////////////////////////////////////////
+        for(let index = 0; index < ustensils.length; index++) {
+            const ust = document.createElement("span");
+            ust.setAttribute("class", "usts");
+            // if(index < ustensils.length - 1) {
+            //   ust.textContent = " " + ustensils[index].toLowerCase() + ",";
+            // } else {
+              ust.textContent = " " + ustensils[index].toLowerCase()+" ";
+            // }
+            ustensilsListtemplate.append(ust);
+          }
+        ///////////////////////////////////////
         ustensilsTemplate.append(h3u)
         ustensilsTemplate.append(ustensilsListtemplate)
 
@@ -152,6 +154,8 @@ hidden.dataset.hidden="true"
 
     return { id, image, name, ingredients, time, description, appliance, ustensils, getRecipeCardDOM };
 } // end RecipeCardTemplate
+
+
 
 function displayCards(cardarray) {
     const cardcontainer = document.querySelector(".card_container");
