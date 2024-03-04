@@ -11,7 +11,7 @@ function RecipeCardTemplate(data) {
         // img tag
         let cardImg = document.createElement('div');
         cardImg.className = 'cardImg';
-        cardImg.style.backgroundImage = `url(../pictures/${image})`;
+        cardImg.style.backgroundImage = `url(./pictures/${image})`;
         cardImg.style.backgroundSize = 'cover';
         cardImg.style.backgroundPosition = 'center';
         cardImg.style.width = '100%'; // Set the width
