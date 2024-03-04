@@ -220,24 +220,9 @@ for(let i=0;i<allRecipesList.length;i++){
   }
 
 
-  //nex recipelist for nexw selcts
+
 
   let newRecipeList = [];
-
-  // newRecipeList = recipes.filter(recipe =>  
-  //     recipe.name.toUpperCase().includes(query) || 
-  //     recipe.ingredients.some(ingredient => ingredient.ingredient.toUpperCase().includes(query)) || 
-  //     recipe.description.toUpperCase().includes(query)
-  // );
-  
-  // for(let i =0;i<recipes.length;i++){
-  //   /*           */
-
-  // {
-  // newRecipeList.push(recipes[i])}
-  // }
-
-  //////////////////////////////////////////////
 
 
 
@@ -283,15 +268,12 @@ includesItems(recipes[r].description,query))
 
 ////////////////////////////////////
 
-  // console.log("New recipe list",newRecipeList);
 
 let IngredientsArray=getIngredientsList(newRecipeList);
 let AppareilsList=getApparails(newRecipeList)
 let UstensilesList=getUstensilesList(newRecipeList)
 
-// console.log(IngredientsArray)
-// console.log(AppareilsList)
-// console.log(UstensilesList)
+
 
 createfilterDropDown(
   ingredientsButton, //
@@ -357,9 +339,7 @@ let IngredientsArray=getIngredientsListDOM(newRecipeList);
 let AppareilsList=getApparailsDOM(newRecipeList)
 let UstensilesList=getUstensilesListDOM(newRecipeList)
 
-// console.log(IngredientsArray)
-// console.log(AppareilsList)
-// console.log(UstensilesList)
+
 
 createfilterDropDown(
   ingredientsButton, //
@@ -446,12 +426,23 @@ function removeSelectFilter(tag){
       console.log("Filters after ",filterBy)
      
 /////////////////////////////////////////////////////////////////////
-        
+
+function doesEveryContain(array, term) {
+  for(let i = 0; i < array.length; i++) {
+    if (!term.toUpperCase().includes(array[i].toUpperCase())) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+////////////        
 
         for(let i=0;i<invisibleRecipesList.length;i++){
           let textContent = invisibleRecipesList[i].textContent.toUpperCase();
 
-          let containsAllTags = filterBy.every(tag => textContent.includes(tag.toUpperCase()));
+         let containsAllTags = doesEveryContain(filterBy, textContent);
       
           if (containsAllTags) {
               invisibleRecipesList[i].dataset.visible="true";
