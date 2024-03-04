@@ -396,7 +396,7 @@ function displayNoResults() {
   let searchterm=document.querySelector("#queryInput").value
   const resultmsg = document.getElementById("resultmsg");
   resultmsg.dataset.active="true"
-  resultmsg.textContent = "Aucune recette ne contient  	« "+searchterm+" ».Vosu pouvez rechercher  «tarte aux pommes », « poisson » etc.";
+  resultmsg.textContent = "Aucune recette ne contient  	« "+searchterm+" ».Vous pouvez rechercher  «tarte aux pommes », « poisson » etc.";
 }//end displayno
 
 function updateRecipeCount() {
