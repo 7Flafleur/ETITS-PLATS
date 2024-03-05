@@ -104,6 +104,12 @@ queryInput.addEventListener("input",(event) => {
   else if (query == "") {
     resetCards();
     resetSearchfilter();
+
+     let searchtags=document.querySelectorAll(".searchtags")
+
+    searchtags.forEach((searchtag)=>{
+      searchtag.remove();
+    })
    
   }
   updateRecipeCount();
