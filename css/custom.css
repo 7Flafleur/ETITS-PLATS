@@ -138,7 +138,7 @@ main {
   height: 275px;
   overflow-y: hidden;
   scrollbar-width: none;
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+ 
   width: 100%;
   font-size: 16px;
   padding: 5px;
@@ -148,7 +148,7 @@ main {
 #dropdown1,
 #dropdown2,
 #dropdown3 {
-  display: none; /* For Chrome, Safari and Opera */
+  display: none; 
 }
 
 .dropdown-item {
