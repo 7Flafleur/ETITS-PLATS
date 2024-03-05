@@ -1,0 +1,40 @@
+function someincludes(array,term){
+  for(let i=0;i<array.length;i++){
+    if(includesItems(array[i],term.toUpperCase())){
+      return true;
+    }
+  }
+return false;
+}
+
+//includes
+function includesItems(subarray,item){
+  for(let i=0;i<subarray.length;i++){
+    if (subarray[i].toUpperCase()==item.toUpperCase()){
+      return true;
+    }
+  }
+  return false;
+}
+
+
+function filterincludespush(array,term,target){
+  for(let i=0;i<array.length;i++ ){
+    if (includesItems(array[i], term)){
+      target.push(array[i])
+    }
+
+  }
+}
+
+
+function countincludes(array,term){
+let counter=0;
+  for(let i=0;i<array.length;i++ ){
+    if (includesItems(array[i], term)){
+	counter+=
+  
+    }
+  }
+  return counter;
+  }
