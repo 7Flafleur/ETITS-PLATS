@@ -78,7 +78,7 @@ chevronup.addEventListener("click", function(){
   searchField.addEventListener("input", function () {
 
     let dropdown_items = dropdown.querySelectorAll(".dropdown-item");
-    let spchars=['<', '>', '/']
+    let spchars=['<', '>', '/',';']
      if(spchars.some(char => searchField.value.includes(char)))
      {console.log("charactères erronés")
     return false}
