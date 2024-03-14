@@ -111,6 +111,15 @@ queryInput.addEventListener("input",(event) => {
   else if (query == "") {
     resetCards();
     resetSearchfilter();
+    updateFilterDropdown();
+
+    let seartags=document.querySelectorAll(".searchtag")
+
+    for (let s =0; s<seartags.length;s++)
+    {
+      seartags[s].remove()
+    }
+   
    
   }
   updateRecipeCount();
@@ -131,6 +140,15 @@ queryInput.addEventListener("keyup", (event) => {
         resetCards()
         resetSearchfilter()
         updateFilterDropdown()
+
+        let seartags=document.querySelectorAll(".searchtag")
+
+        for (let s =0; s<seartags.length;s++)
+        {
+          seartags[s].remove()
+        }
+       
+
       }
   } 
 
@@ -244,3 +262,4 @@ const reset = document.getElementById("reset");
 reset.addEventListener("click", resetCards);
 reset.addEventListener("click", resetSearchfilter)
 reset.addEventListener("click", updateFilterDropdown)
+reset.addEventListener("click", removeTagsonrest)
