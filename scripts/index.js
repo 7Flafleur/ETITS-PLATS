@@ -154,6 +154,13 @@ queryInput.addEventListener("keyup", (event) => {
 
 });
 
+queryInput.addEventListener("focus", ()=>{
+  const ul=document.querySelectorAll("ul")
+  ul.forEach((u)=>{
+    u.style.display="none"
+  })
+})
+
 
 
 
