@@ -126,9 +126,11 @@ queryInput.addEventListener("keyup", (event) => {
       filterBy.pop(); // Remove the last search term
       console.log(filterBy[filterBy.length - 1])
       findCardsSearch(queryInput.value.toUpperCase());
+      updateFilterDropdown();
       if(queryInput.value==""){
         resetCards()
         resetSearchfilter()
+        updateFilterDropdown()
       }
   } 
 
@@ -240,4 +242,5 @@ closeLB.addEventListener("click", ()=>
 ////////RESET BUTTON FOR TESTING////////////////////
 const reset = document.getElementById("reset");
 reset.addEventListener("click", resetCards);
-reset.addEventListener("click", resetSearchfilter())
+reset.addEventListener("click", resetSearchfilter)
+reset.addEventListener("click", updateFilterDropdown)

@@ -495,7 +495,6 @@ function applyClickToVisibleItems() {
 }
 
 
-
 function updateFilterDropdown(){
 
   let visibleRecipesList = document.querySelectorAll(
