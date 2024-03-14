@@ -33,7 +33,7 @@ h1 {
   display: flex;
   align-items: center;
   padding-right: 10px;
-
+  font: "Manrope";
   width: 66%;
   height: 72px;
   background-color: #f1f1f1;
@@ -130,6 +130,8 @@ main {
 
 .dropdown-item {
   display: block;
+  width: 95%;
+  margin-right: 2px;
 }
 
 #dropdown1,
