@@ -76,11 +76,12 @@ queryInput.addEventListener("input",(event) => {
   if(spchars.some(char => query.includes(char)))
   {console.log("charactères erronés")
  return false}
+ resetSearchfilter();
+    removeTagsonrest();
   if (query.length >= 3) {
     
     findCardsSearch(query);
-    resetSearchfilter();
-    removeTagsonrest();
+    
   }
   else if (query == "") {
     resetCards();
