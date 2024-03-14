@@ -79,6 +79,8 @@ queryInput.addEventListener("input",(event) => {
   if (query.length >= 3) {
     
     findCardsSearch(query);
+    resetSearchfilter();
+    removeTagsonrest();
   }
   else if (query == "") {
     resetCards();
