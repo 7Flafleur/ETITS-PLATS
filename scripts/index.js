@@ -274,9 +274,9 @@ closeLB.addEventListener("click", ()=>
 
 
 
-////////RESET BUTTON FOR TESTING////////////////////
-const reset = document.getElementById("reset");
-reset.addEventListener("click", resetCards);
-reset.addEventListener("click", resetSearchfilter)
-reset.addEventListener("click", updateFilterDropdown)
-reset.addEventListener("click", removeTagsonrest)
+// ////////RESET BUTTON FOR TESTING////////////////////
+// const reset = document.getElementById("reset");
+// reset.addEventListener("click", resetCards);
+// reset.addEventListener("click", resetSearchfilter)
+// reset.addEventListener("click", updateFilterDropdown)
+// reset.addEventListener("click", removeTagsonrest)
