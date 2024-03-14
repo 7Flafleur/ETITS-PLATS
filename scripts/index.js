@@ -109,6 +109,10 @@ queryInput.addEventListener("input",(event) => {
     
     findCardsSearch(query);
     updateFilterDropdown();
+    resetSearchfilter();
+    removeTagsonrest();
+
+
   }
   else if (query == "") {
     resetCards();
