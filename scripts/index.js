@@ -154,10 +154,20 @@ queryInput.addEventListener("keyup", (event) => {
 
 });
 
+
 queryInput.addEventListener("focus", ()=>{
   const ul=document.querySelectorAll("ul")
+  const chups=document.querySelectorAll(".fa-chevron-up")
+  const chdown=document.querySelectorAll(".fa-chevron-down")
+
   ul.forEach((u)=>{
     u.style.display="none"
+  })
+  chups.forEach((chu)=>{
+    chu.style.display="none"
+  })
+  chdown.forEach((chd)=>{
+    chd.style.display="block"
   })
 })
 
