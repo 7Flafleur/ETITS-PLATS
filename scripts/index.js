@@ -150,6 +150,7 @@ loupe.addEventListener("click", (event) => {
     
   }
   else if (query == "") {
+    console.log("empty search,reset search filter")
     resetCards();
     resetSearchfilter();
     let searchtags=document.querySelectorAll(".searchtag")
@@ -236,7 +237,7 @@ closeLB.addEventListener("click", ()=>
 
 
 
-//////////RESET BUTTON FOR TESTING////////////////////
-// const reset = document.getElementById("reset");
-// reset.addEventListener("click", resetCards);
-// reset.addEventListener("click", resetSearchfilter())
+////////RESET BUTTON FOR TESTING////////////////////
+const reset = document.getElementById("reset");
+reset.addEventListener("click", resetCards);
+reset.addEventListener("click", resetSearchfilter())
