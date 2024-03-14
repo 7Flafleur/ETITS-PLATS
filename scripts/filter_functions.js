@@ -146,7 +146,15 @@ function removeTagOnClick() {
 
 // Call the functions
 
+function removeTagsonrest(){
+  let seartags=document.querySelectorAll(".searchtag")
 
+  for (let s =0; s<seartags.length;s++)
+  {
+    seartags[s].remove()
+  }
+ 
+}
 
 
 
