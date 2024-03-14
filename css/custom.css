@@ -33,7 +33,7 @@ h1 {
   display: flex;
   align-items: center;
   padding-right: 10px;
- 
+  font: "Manrope";
   width: 66%;
   height: 72px;
   background-color: #f1f1f1;
@@ -92,7 +92,8 @@ main {
   display: none;
 }
 
-.chevron-up [data-active=false], .chevron-down[data-active=false] {
+.chevron-up [data-active=false],
+.chevron-down[data-active=false] {
   display: none;
 }
 
@@ -130,6 +131,8 @@ main {
 
 .dropdown-item {
   display: block;
+  width: 95%;
+  margin-right: 2px;
 }
 
 #dropdown1,
@@ -138,7 +141,7 @@ main {
   height: 275px;
   overflow-y: hidden;
   scrollbar-width: none;
- 
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
   width: 100%;
   font-size: 16px;
   padding: 5px;
@@ -148,7 +151,7 @@ main {
 #dropdown1,
 #dropdown2,
 #dropdown3 {
-  display: none; 
+  display: none; /* For Chrome, Safari and Opera */
 }
 
 .dropdown-item {
@@ -362,7 +365,7 @@ main {
 .card_content h4 {
   margin-bottom: 0;
   padding: 0;
-  color: var(--Grey, #7A7A7A);
+  color: var(--Grey, #7a7a7a);
   font-family: Manrope;
   font-size: 12px;
   font-style: normal;
@@ -456,7 +459,8 @@ main {
   scrollbar-width: none;
   position: relative;
 }
-.card[data-lightbox=true] .card_content-recette, .card[data-lightbox=true] .card_content-ingredients {
+.card[data-lightbox=true] .card_content-recette,
+.card[data-lightbox=true] .card_content-ingredients {
   overflow: scroll;
   scrollbar-width: none;
 }
@@ -521,7 +525,8 @@ main {
   h1 {
     width: 90%;
   }
-  .sort, .card_container {
+  .sort,
+  .card_container {
     display: flex;
     flex-direction: column;
     align-items: center;
