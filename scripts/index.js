@@ -71,8 +71,9 @@ filterBy=[];
 
 queryInput.addEventListener("input",(event) => {
   event.preventDefault();
+  console.log("input")
   let query = queryInput.value.toUpperCase();
-  let spchars=['<', '>', '/']
+  let spchars=['<', '>', '/',';']
   if(spchars.some(char => query.includes(char)))
   {console.log("charactères erronés")
  return false}
@@ -100,13 +101,14 @@ queryInput.addEventListener("input",(event) => {
   if (event.key==="Enter")
   event.preventDefault();
   let query = queryInput.value.toUpperCase();
-  let spchars=['<', '>', '/']
+  let spchars=['<', '>', '/',';']
   if(spchars.some(char => query.includes(char)))
   {console.log("charactères erronés")
  return false}
   if (query.length >= 3) {
     
     findCardsSearch(query);
+    updateFilterDropdown();
   }
   else if (query == "") {
     resetCards();
