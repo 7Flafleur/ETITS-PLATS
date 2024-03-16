@@ -469,40 +469,52 @@ resultmsg.textContent="";
 }//end removeselectfilter
 
 function applyClickToVisibleItems() {
+
+  // Apply click function to visible elements in dropdown
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
 
-  for(let i=0; i<visibleSelectItems.length; i++) {
-    visibleSelectItems[i].addEventListener("click", (event) => {
+
+
+  // Create tag for chosen term
+  visibleSelectItems.forEach((item) => {
+    item.addEventListener("click", (event) => {
       let tag = event.currentTarget.textContent;
-      let target = event.currentTarget;
-      let button = target.parentNode.previousElementSibling;
-      let chevup = button.querySelector(".fa-chevron-up");
-      let chevdown = button.querySelector(".fa-chevron-down");
-      console.log("Target", target);
-      console.log("Parent", target.parentNode.previousElementSibling);
-      createTag(visibleSelectItems[i], tag); // Changed item to visibleSelectItems[i]
-      chevdown.style.display = "inline";
-      chevup.style.display = "none";
+      let target=event.currentTarget
+      let button=target.parentNode.previousElementSibling
+      let chevup=button.querySelector(".fa-chevron-up")
+      let chevdown=button.querySelector(".fa-chevron-down")
+      console.log("Target",target)
+      console.log("Parent",target.parentNode.previousElementSibling)
+      createTag(item, tag);
+      chevdown.style.display="inline"
+      chevup.style.display="none"
+  
+     
 
+      // Remove tag on click
       let searchtags = document.querySelectorAll(".searchtag");
-
-      for(let j=0; j<searchtags.length; j++){
-        searchtags[j].addEventListener("click", (event) => {
+      searchtags.forEach((item) => {
+        item.addEventListener("click", (event) => {
           let term = event.currentTarget.textContent;
           console.log(term);
           event.currentTarget.remove();
           removeSelectFilter(tag);
           const tagsection = document.querySelector(".tag_section");
           tagsection.removeAttribute("data-active");
-          updateFilterDropdown();
+          updateFilterDropdown()
         });
-      }
+      });
 
+      // Run search function
       findCardsSelect(tag);
       updateRecipeCount();
+
+      //toggle chevron
+
+
     });
-  }
-} //end applyclicktovisibleitems
+  });
+}
 
 
 function updateFilterDropdown(){
