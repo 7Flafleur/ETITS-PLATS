@@ -388,7 +388,7 @@ function displayNoResults() {
   const resultmsg = document.getElementById("resultmsg");
   resultmsg.dataset.active="true"
   resultmsg.textContent = "Aucune recette ne contient  	« "+searchterm+" ».Vous pouvez rechercher  «tarte aux pommes », « poisson » etc.";
-}//end displayno
+}//end displaynoresult
 
 function updateRecipeCount() {
   let visibleRecipesList = document.querySelectorAll(
@@ -400,7 +400,7 @@ function updateRecipeCount() {
   }
   else{nb_recettes.textContent = nb + " recettes"; }
   
-}//end updaterecipe
+}//end updaterecipecount
 
 // Call this function every time `visibleRecipesList` is updated
 
@@ -447,7 +447,6 @@ function doesEveryContain(array, term) {
   return true;
 }
 
-
 ////////////        
 
         for(let i=0;i<invisibleRecipesList.length;i++){
@@ -467,7 +466,7 @@ resultmsg.textContent="";
  updateRecipeCount()
  
 
-}
+}//end removeselectfilter
 
 function applyClickToVisibleItems() {
   let visibleSelectItems = document.querySelectorAll(".dropdown-item[data-visible]");
@@ -503,7 +502,7 @@ function applyClickToVisibleItems() {
       updateRecipeCount();
     });
   }
-}
+} //end applyclicktovisibleitems
 
 
 function updateFilterDropdown(){
@@ -558,4 +557,4 @@ function updateFilterDropdown(){
         }
 
 
-}
+} //end updatefilterdropdown
