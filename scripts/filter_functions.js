@@ -438,14 +438,6 @@ function removeSelectFilter(tag){
      
 /////////////////////////////////////////////////////////////////////
 
-function doesEveryContain(array, term) {
-  for(let i = 0; i < array.length; i++) {
-    if (!term.toUpperCase().includes(array[i].toUpperCase())) {
-      return false;
-    }
-  }
-  return true;
-}
 
 ////////////        
 
@@ -570,3 +562,13 @@ function updateFilterDropdown(){
 
 
 } //end updatefilterdropdown
+
+
+function doesEveryContain(array, term) {
+  for(let i = 0; i < array.length; i++) {
+    if (!term.toUpperCase().includes(array[i].toUpperCase())) {
+      return false;
+    }
+  }
+  return true;
+}
