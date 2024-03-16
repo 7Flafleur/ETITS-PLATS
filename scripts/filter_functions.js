@@ -454,8 +454,10 @@ resultmsg.textContent="";
         ///////////////////////////////////////////
 
 
-
- updateRecipeCount()
+resetSearchfilter()
+findCardsSearch(query)
+updateRecipeCount()
+updateFilterDropdown()
  
 
 }//end removeselectfilter
